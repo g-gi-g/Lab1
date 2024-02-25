@@ -1,4 +1,4 @@
-﻿using MarketplaceWebApplication.Models;
+using MarketplaceWebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
