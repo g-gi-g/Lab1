@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarketplaceWebApplication.Data;
+using MarketplaceWebApplication.Extensions;
+using MarketplaceWebApplication.Models;
 
 namespace MarketplaceWebApplication.Controllers
 {
@@ -16,6 +18,33 @@ namespace MarketplaceWebApplication.Controllers
         public SavedOffersController(DbmarketplaceContext context)
         {
             _context = context;
+        }
+
+        public async Task<IActionResult> Save(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            SavedOffer saved = new SavedOffer();
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+            if (userInfo == null)
+            {
+                return NotFound();
+            }
+
+            saved.OfferId = (int)id;
+            saved.UserId = (int)userInfo.Id;
+            saved.TimeAdded = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(saved);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return NotFound();
         }
 
         // GET: SavedOffers

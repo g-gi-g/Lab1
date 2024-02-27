@@ -9,23 +9,23 @@ using MarketplaceWebApplication.Data;
 
 namespace MarketplaceWebApplication.Controllers
 {
-    public class ChatsController : Controller
+    public class MessagesController : Controller
     {
         private readonly DbmarketplaceContext _context;
 
-        public ChatsController(DbmarketplaceContext context)
+        public MessagesController(DbmarketplaceContext context)
         {
             _context = context;
         }
 
-        // GET: Chats
+        // GET: Messages
         public async Task<IActionResult> Index()
         {
-            var dbmarketplaceContext = _context.Chats.Include(c => c.Offer);
+            var dbmarketplaceContext = _context.Messages.Include(m => m.Chat).Include(m => m.Sender);
             return View(await dbmarketplaceContext.ToListAsync());
         }
 
-        // GET: Chats/Details/5
+        // GET: Messages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,57 +33,45 @@ namespace MarketplaceWebApplication.Controllers
                 return NotFound();
             }
 
-            var chat = await _context.Chats
-                .Include(c => c.Offer)
+            var message = await _context.Messages
+                .Include(m => m.Chat)
+                .Include(m => m.Sender)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (chat == null)
+            if (message == null)
             {
                 return NotFound();
             }
 
-            return View(chat);
+            return View(message);
         }
 
-        // GET: Chats/Create
-        public async Task<IActionResult> Create(int? id)
+        // GET: Messages/Create
+        public IActionResult Create()
         {
-            if (id is null) 
-            {
-                return NotFound();
-            }
-            Chat chat = new Chat();
-            chat.OfferId = (int)id;
-            chat.TimeCreated = DateTime.Now;
-
-            if (ModelState.IsValid)
-            {
-                _context.Add(chat);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return NotFound();
-            //ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id");
-            //return View();
+            ViewData["ChatId"] = new SelectList(_context.Chats, "Id", "Id");
+            ViewData["SenderId"] = new SelectList(_context.Users, "Id", "Id");
+            return View();
         }
 
-        // POST: Chats/Create
+        // POST: Messages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,OfferId,TimeCreated")] Chat chat)
+        public async Task<IActionResult> Create([Bind("Id,Photo,Text,TimeAdded,ChatId,SenderId")] Message message)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(chat);
+                _context.Add(message);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", chat.OfferId);
-            return View(chat);
+            ViewData["ChatId"] = new SelectList(_context.Chats, "Id", "Id", message.ChatId);
+            ViewData["SenderId"] = new SelectList(_context.Users, "Id", "Id", message.SenderId);
+            return View(message);
         }
 
-        // GET: Chats/Edit/5
+        // GET: Messages/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,23 +79,24 @@ namespace MarketplaceWebApplication.Controllers
                 return NotFound();
             }
 
-            var chat = await _context.Chats.FindAsync(id);
-            if (chat == null)
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null)
             {
                 return NotFound();
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", chat.OfferId);
-            return View(chat);
+            ViewData["ChatId"] = new SelectList(_context.Chats, "Id", "Id", message.ChatId);
+            ViewData["SenderId"] = new SelectList(_context.Users, "Id", "Id", message.SenderId);
+            return View(message);
         }
 
-        // POST: Chats/Edit/5
+        // POST: Messages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,OfferId,TimeCreated")] Chat chat)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Photo,Text,TimeAdded,ChatId,SenderId")] Message message)
         {
-            if (id != chat.Id)
+            if (id != message.Id)
             {
                 return NotFound();
             }
@@ -116,12 +105,12 @@ namespace MarketplaceWebApplication.Controllers
             {
                 try
                 {
-                    _context.Update(chat);
+                    _context.Update(message);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ChatExists(chat.Id))
+                    if (!MessageExists(message.Id))
                     {
                         return NotFound();
                     }
@@ -132,11 +121,12 @@ namespace MarketplaceWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", chat.OfferId);
-            return View(chat);
+            ViewData["ChatId"] = new SelectList(_context.Chats, "Id", "Id", message.ChatId);
+            ViewData["SenderId"] = new SelectList(_context.Users, "Id", "Id", message.SenderId);
+            return View(message);
         }
 
-        // GET: Chats/Delete/5
+        // GET: Messages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,35 +134,36 @@ namespace MarketplaceWebApplication.Controllers
                 return NotFound();
             }
 
-            var chat = await _context.Chats
-                .Include(c => c.Offer)
+            var message = await _context.Messages
+                .Include(m => m.Chat)
+                .Include(m => m.Sender)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (chat == null)
+            if (message == null)
             {
                 return NotFound();
             }
 
-            return View(chat);
+            return View(message);
         }
 
-        // POST: Chats/Delete/5
+        // POST: Messages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var chat = await _context.Chats.FindAsync(id);
-            if (chat != null)
+            var message = await _context.Messages.FindAsync(id);
+            if (message != null)
             {
-                _context.Chats.Remove(chat);
+                _context.Messages.Remove(message);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ChatExists(int id)
+        private bool MessageExists(int id)
         {
-            return _context.Chats.Any(e => e.Id == id);
+            return _context.Messages.Any(e => e.Id == id);
         }
     }
 }

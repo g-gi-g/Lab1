@@ -80,7 +80,9 @@
             <td>
                     @if (userInfo is not null && item.SellerId != userInfo.Id)
                     {
-                        <a asp-controller="Orders" asp-action="Create" asp-route-id="@item.Id" class="btn btn-primary">Замовити</a>
+                        <a asp-controller="Orders" asp-action="Create" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Замовити</a>
+                        <a asp-controller="SavedOffers" asp-action="Save" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Зберегти</a>
+                        <a asp-controller="Chats" asp-action="Create" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Написати</a>
                     }
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Деталі</a>
             </td>
