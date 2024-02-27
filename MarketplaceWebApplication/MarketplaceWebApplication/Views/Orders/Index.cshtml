@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MarketplaceWebApplication.Data.Order>
+@using Microsoft.AspNetCore.Http
+@using MarketplaceWebApplication.Extensions
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Замовлення";
+    var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+}
+@if (userInfo is null)
+{
+    <h1>Ви поки-що не увійшли до кабінету</h1>
+    <a asp-controller="Users" asp-action="Index" asp-route-id="" class="btn btn-primary">Увійти</a>
+}
+else
+{
+    <h1>Замовлення</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Дата замовлення
+                </th>
+                <th>
+                    Коментар
+                </th>
+                <th>
+                    Спосіб оплати
+                </th>
+                <th>
+                    Статус
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+        if (item.CustomerId == userInfo.Id)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMethod.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status.Id)
+                </td>
+                <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Деталі</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Видалити</a>
+                </td>
+                    </tr>
+                }
+    }
+        </tbody>
+    </table>
+}

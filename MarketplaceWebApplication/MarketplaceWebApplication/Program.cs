@@ -8,6 +8,14 @@ builder.Services.AddDbContext<DbmarketplaceContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(10);
+});
+
+builder.Services.AddDistributedMemoryCache();
 
 var app = builder.Build();
 
@@ -24,10 +32,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    //pattern: "{controller=Offers}/{action=MainPageView}/{id?}");
+    pattern: "{controller=OrderStatus}/{action=Index}/{id?}");
 
 app.Run();

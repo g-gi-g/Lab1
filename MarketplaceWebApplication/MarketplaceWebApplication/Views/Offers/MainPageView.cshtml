@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MarketplaceWebApplication.Data.Offer>
+@using Microsoft.AspNetCore.Http
+@using MarketplaceWebApplication.Extensions
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Головна сторінка";
+    var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+}
+
+<h1>Ласкаво просимо! Що хочете придбати або продати сьогодні?</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Назва
+            </th>
+            <th>
+                Ціна(в грн)
+            </th>
+            <th>
+                Фото
+            </th>
+            <th>
+                Кількість замовлень
+            </th>
+            <th>
+                Час створення
+            </th>
+            <th>
+                Кількість товару
+            </th>
+            <th>
+                Категорія
+            </th>
+            <th>
+                Продавець
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            @if (item.Photo != null && item.Photo.Length > 0)
+            {
+                string base64String = Convert.ToBase64String(item.Photo);
+                <td>
+                    <img src="data:image;base64,@base64String" alt="Photo" style="width:100px; height:auto;" />
+                </td>
+            }
+            else
+            {
+                <td>
+                    Фото відсутнє
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfOrders)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seller.Username)
+            </td>
+            <td>
+                    @if (userInfo is not null && item.SellerId != userInfo.Id)
+                    {
+                        <a asp-controller="Orders" asp-action="Create" asp-route-id="@item.Id" class="btn btn-primary">Замовити</a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Деталі</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,84 @@
+﻿@model MarketplaceWebApplication.Data.Offer
+
+@{
+    ViewData["Title"] = "Змінити пропозицію";
+}
+
+<h1>Створити</h1>
+
+<h4>Пропозицію</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <!--<label asp-for="SellerId" class="control-label"></label>-->
+                <select asp-for="SellerId" class="form-control" asp-items="ViewBag.SellerId" hidden></select>
+                <span asp-validation-for="SellerId" class="text-danger" hidden></span>
+            </div>
+            <div class="form-group">
+                <label for="Name" class="control-label">Назва</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Price" class="control-label">Ціна</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="control-label">Опис</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Photo" class="control-label">Фото</label>
+                <input asp-for="Photo" class="form-control" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <!--<label asp-for="NumberOfOrders" class="control-label"></label>-->
+                <input asp-for="NumberOfOrders" class="form-control" hidden/>
+                <span asp-validation-for="NumberOfOrders" class="text-danger" hidden></span>
+            </div>
+            <div class="form-group">
+                <label for="CategoryId" class="control-label">Категорія</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <!--<label asp-for="TimeAdded" class="control-label"></label>-->
+                <input asp-for="TimeAdded" class="form-control" hidden/>
+                <span asp-validation-for="TimeAdded" class="text-danger" hidden></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label" hidden>
+                    <input class="form-check-input" asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsHidden" /> @Html.DisplayNameFor(model => model.IsHidden)
+                </label>
+                </div>
+            <div class="form-group">
+                <label asp-for="ItemAmount" class="control-label"></label>
+                <input asp-for="ItemAmount" class="form-control" />
+                <span asp-validation-for="ItemAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

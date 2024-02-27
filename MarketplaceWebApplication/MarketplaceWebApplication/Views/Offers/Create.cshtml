@@ -1,0 +1,93 @@
+﻿@model MarketplaceWebApplication.Models.OfferModel
+@using Microsoft.AspNetCore.Http
+@using MarketplaceWebApplication.Extensions
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Створити пропозицію";
+    var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+}
+
+@if (userInfo is null)
+{
+    <h1>Ви поки-що не увійшли до кабінету</h1>
+    <a asp-controller="Users" asp-action="Index" asp-route-id="" class="btn btn-primary">Увійти</a>
+}
+else
+{ 
+    <h1>Створити</h1>
+
+    <h4>пропозицію</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <!--</><label asp-for="SellerId" class="control-label"></label>asp-items="ViewBag.SellerId"-->
+                    <input asp-for="SellerId" class="form-control" value="@userInfo.Id" hidden>
+                </div>
+                <div class="form-group">
+                    <label for="Name" class="control-label">Ім'я</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Price" class="control-label">Ціна</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="control-label">Опис</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Photo" class="control-label">Фото</label>
+                    <input asp-for="Photo" class="form-control" id="Photo" type="file" />
+                    <!--<span asp-validation-for="Photo"  class="text-danger"></span>-->
+                </div>
+                <div class="form-group">
+                    <!--<label for="NumberOfOrders" class="control-label"></label>-->
+                    <input asp-for="NumberOfOrders" class="form-control" value=0 hidden/>
+                    <span asp-validation-for="NumberOfOrders" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="CategoryId" class="control-label">Категорія</label>
+                    <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                </div>
+                <div class="form-group">
+                    <!--<label asp-for="TimeAdded" class="control-label"></label>
+                    <input asp-for="TimeAdded" class="form-control" />
+                    <span asp-validation-for="TimeAdded" class="text-danger"></span>-->
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label" hidden>
+                        <input class="form-check-input" asp-for="IsDeleted" hidden/> @Html.DisplayNameFor(model => model.IsDeleted)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsHidden" /> @Html.DisplayNameFor(model => model.IsHidden)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ItemAmount" class="control-label"></label>
+                    <input asp-for="ItemAmount" class="form-control" />
+                    <span asp-validation-for="ItemAmount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Створити" class="btn btn-primary" style="margin: 5px;"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="btn btn-primary" style="margin: 5px;">Назад</a>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
