@@ -35,6 +35,26 @@ namespace MarketplaceWebApplication.Controllers
             return View(await dbmarketplaceContext.ToListAsync());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> MainPageView(string searchWord)
+        {
+            if (string.IsNullOrEmpty(searchWord))
+            {
+                var dbmarketplaceContext = await _context.Offers.Include(o => o.Category).Include(o => o.Seller).ToListAsync();
+                return View(dbmarketplaceContext);
+            }
+            else
+            {
+                var dbmarketplaceContext = await _context.Offers
+                    .Include(o => o.Category)
+                    .Include(o => o.Seller)
+                    .Where(o => o.Name == searchWord)
+                    .ToListAsync();
+
+                return View(dbmarketplaceContext);
+            }
+        }
+
         // GET: Offers/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarketplaceWebApplication.Data;
+using Microsoft.AspNetCore.Http;
+using MarketplaceWebApplication.Extensions;
+using MarketplaceWebApplication.Models;
 
 namespace MarketplaceWebApplication.Controllers
 {
@@ -21,8 +24,55 @@ namespace MarketplaceWebApplication.Controllers
         // GET: Chats
         public async Task<IActionResult> Index()
         {
-            var dbmarketplaceContext = _context.Chats.Include(c => c.Offer);
-            return View(await dbmarketplaceContext.ToListAsync());
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            int? userId = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+
+            var AsASeller = _context.Chats.Include(c => c.Offer)
+                .Where(c => c.Offer.SellerId == userId)
+                .ToList();
+
+            var SellerChatIds = AsASeller.Select(chat => chat.Id).ToHashSet();
+
+            var BuyersChats = _context.Messages.Where(m => SellerChatIds.Contains(m.ChatId) && m.SenderId != userId)
+                .Select(m => new ChatBuyer
+                {
+                    ChatId = m.ChatId,
+                    BuyerLogin = m.Sender.Username,
+                })
+                .ToList();
+
+            var AsABuyer = _context.Chats.Include(c => c.Offer)
+                .Where(c => c.Offer.SellerId != userId)
+                .ToList();
+
+            UserChats userChats = new UserChats
+            {
+                AsASeller = AsASeller,
+                AsABuyer = AsABuyer,
+                ChatsBuyers = BuyersChats
+            };
+
+            return View(userChats);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateIndex(bool isSelected, UserChats userChats)
+        {
+            if (isSelected)
+            {
+                ViewData["Message"] = "BuyerChatsSelected";
+            }
+            else
+            {
+                ViewData["Message"] = "SellerChatsSelected";
+            }
+            return View("~/Views/Shared/SomeOtherView.cshtml", userChats);
         }
 
         // GET: Chats/Details/5

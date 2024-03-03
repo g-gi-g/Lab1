@@ -29,9 +29,9 @@ namespace MarketplaceWebApplication.Controllers
 
             SavedOffer saved = new SavedOffer();
             var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
-            if (userInfo == null)
+            if (userInfo is null)
             {
-                return NotFound();
+                return RedirectToAction("NotLoggedView", "Home", null);
             }
 
             saved.OfferId = (int)id;
@@ -77,14 +77,22 @@ namespace MarketplaceWebApplication.Controllers
         // GET: SavedOffers/Create
         public IActionResult Create()
         {
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            ViewData["UserId"] = userId;
+
             ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
         // POST: SavedOffers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UserId,OfferId,TimeAdded")] SavedOffer savedOffer)

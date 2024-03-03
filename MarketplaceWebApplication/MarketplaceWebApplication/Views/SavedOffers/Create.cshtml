@@ -5,7 +5,6 @@
 
 @{
     ViewData["Title"] = "Зберегти";
-    var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
 }
 
 <h1>Зберегти</h1>
@@ -17,11 +16,11 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <select asp-for="UserId" class ="form-control" value="@userInfo.Id" hidden></select>
+                <select asp-for="UserId" class ="form-control" value="ViewBag.UserId" hidden></select>
             </div>
             <div class="form-group">
                 <label asp-for="OfferId" class="control-label"></label>
-                <select asp-for="OfferId" class ="form-control" asp-items="ViewBag.OfferId"></select>
+                <select asp-for="OfferId" class ="form-control" asp-items="ViewBag.UserId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="TimeAdded" class="control-label"></label>
@@ -36,7 +35,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Назад</a>
 </div>
 
 @section Scripts {

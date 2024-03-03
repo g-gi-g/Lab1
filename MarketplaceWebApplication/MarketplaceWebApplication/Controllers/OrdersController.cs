@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarketplaceWebApplication.Data;
+using MarketplaceWebApplication.Extensions;
+using MarketplaceWebApplication.Models;
 
 namespace MarketplaceWebApplication.Controllers
 {
@@ -21,7 +23,24 @@ namespace MarketplaceWebApplication.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var dbmarketplaceContext = _context.Orders.Include(o => o.Customer).Include(o => o.PaymentMethod).Include(o => o.Status);
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            ViewData["UserId"] = userId;
+
+            var dbmarketplaceContext = _context.Orders.Include(o => o.Customer)
+                .Include(o => o.PaymentMethod)
+                .Include(o => o.Status)
+                .Where(o => o.CustomerId == userId);
+
+            ViewData["PaymentMethods"] = _context.PaymentMethods.ToList();
+            ViewData["OrderStatuses"] = _context.OrderStatuses.ToList();
+
             return View(await dbmarketplaceContext.ToListAsync());
         }
 
@@ -50,28 +69,46 @@ namespace MarketplaceWebApplication.Controllers
         public IActionResult Create()
         {
             ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "Id", "Id");
             ViewData["StatusId"] = new SelectList(_context.OrderStatuses, "Id", "Id");
+            ViewData["PaymentMethodName"] = new SelectList(_context.PaymentMethods, "Id", "Name");
+
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            ViewData["UserId"] = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+
             return View();
         }
 
         // POST: Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CustomerId,TransactionId,StatusId,DateOfOrder,PaymentMethodId,Comment")] Order order)
+        public async Task<IActionResult> Create([Bind("Id,CustomerId,TransactionId,StatusId,DateOfOrder,PaymentMethodId,Comment")] OrderModel order)
         {
             order.DateOfOrder = DateTime.Now;
             if (ModelState.IsValid)
             {
-                _context.Add(order);
+                Order or = new Order 
+                {
+                    CustomerId = order.CustomerId,
+                    TransactionId = order.TransactionId,
+                    StatusId = order.StatusId,
+                    DateOfOrder = order.DateOfOrder,
+                    PaymentMethodId = order.PaymentMethodId,
+                    Comment = order.Comment,
+                };
+                _context.Add(or);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerId"] = new SelectList(_context.Users, "Id", "Id", order.CustomerId);
-            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "Id", "Id", order.PaymentMethodId);
+            ViewData["PaymentMethodName"] = new SelectList(_context.PaymentMethods, "Id", "Name");
             ViewData["StatusId"] = new SelectList(_context.OrderStatuses, "Id", "Id", order.StatusId);
+            ViewData["UserId"] = order.CustomerId;
             return View(order);
         }
 
@@ -95,8 +132,6 @@ namespace MarketplaceWebApplication.Controllers
         }
 
         // POST: Orders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,CustomerId,TransactionId,StatusId,DateOfOrder,PaymentMethodId,Comment")] Order order)

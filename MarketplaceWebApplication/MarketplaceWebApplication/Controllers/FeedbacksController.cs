@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarketplaceWebApplication.Data;
+using MarketplaceWebApplication.Models;
+using MarketplaceWebApplication.Extensions;
 
 namespace MarketplaceWebApplication.Controllers
 {
@@ -19,9 +21,23 @@ namespace MarketplaceWebApplication.Controllers
         }
 
         // GET: Feedbacks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            var dbmarketplaceContext = _context.Feedbacks.Include(f => f.Offer).Include(f => f.User);
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is not null)
+            {
+                ViewData["UserId"] = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            }
+            else
+            {
+                ViewData["UserId"] = 0;
+            }
+
+            var dbmarketplaceContext = _context.Feedbacks.Include(f => f.Offer)
+                .Include(f => f.User)
+                .Where(f => f.Offer.Id == id);
+
             return View(await dbmarketplaceContext.ToListAsync());
         }
 
@@ -46,10 +62,23 @@ namespace MarketplaceWebApplication.Controllers
         }
 
         // GET: Feedbacks/Create
-        public IActionResult Create()
+        public IActionResult Create(int Id)
         {
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+
+            var offer = _context.Offers.FirstOrDefault(o => o.Id == Id);
+            ViewData["OfferId"] = new SelectList(new List<Offer> { offer }, "Id", "Id");
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            ViewData["UserId"] = new SelectList(new List<User> { user }, "Id", "Id");
+
             return View();
         }
 
@@ -58,16 +87,29 @@ namespace MarketplaceWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Rating,Text,OfferId,UserId,TimeAdded")] Feedback feedback)
+        public async Task<IActionResult> Create([Bind("Id,Rating,Text,OfferId,UserId,TimeAdded")] FeedbackModel feedback)
         {
+            feedback.TimeAdded = DateTime.Now;
+
             if (ModelState.IsValid)
             {
-                _context.Add(feedback);
+                Feedback fr = new Feedback 
+                {
+                    OfferId = feedback.OfferId,
+                    UserId = feedback.UserId,
+                    Text = feedback.Text,
+                    TimeAdded = feedback.TimeAdded,
+                };
+                _context.Add(fr);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id", feedback.OfferId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", feedback.UserId);
+
+            var offer = _context.Offers.FirstOrDefault(o => o.Id == feedback.OfferId);
+            ViewData["OfferId"] = new SelectList(new List<Offer> { offer }, "Id", "Id");
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == feedback.UserId);
+            ViewData["UserId"] = new SelectList(new List<User> { user }, "Id", "Id");
             return View(feedback);
         }
 
