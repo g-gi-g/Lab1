@@ -20,6 +20,15 @@ namespace MarketplaceWebApplication.Controllers
             _context = context;
         }
 
+        //public async Task<IActionResult> Index()
+        //{
+            //var dbmarketplaceContext = _context.Feedbacks.Include(f => f.Offer)
+                //.Include(f => f.User);
+            //ViewData["UserId"] = 0;
+
+            //return View(await dbmarketplaceContext.ToListAsync());
+        //}
+
         // GET: Feedbacks
         public async Task<IActionResult> Index(int id)
         {
@@ -37,6 +46,7 @@ namespace MarketplaceWebApplication.Controllers
             var dbmarketplaceContext = _context.Feedbacks.Include(f => f.Offer)
                 .Include(f => f.User)
                 .Where(f => f.Offer.Id == id);
+
 
             return View(await dbmarketplaceContext.ToListAsync());
         }
@@ -215,7 +225,7 @@ namespace MarketplaceWebApplication.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { id = feedback.OfferId });
         }
 
         private bool FeedbackExists(int id)

@@ -3,40 +3,16 @@
   "WorkspaceRootPath": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\savedoffers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\savedoffers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\orderitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\orderitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\offers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\offers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\orderitems\\clients.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\orderitems\\clients.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\orderitems\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\orderitems\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\offers\\mainpageview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\offers\\mainpageview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\controllers\\orderitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\controllers\\orderitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\controllers\\feedbackscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\controllers\\feedbackscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\controllers\\savedofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\controllers\\savedofferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\controllers\\offerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\controllers\\offerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -60,117 +36,39 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\SavedOffers\\Index.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\SavedOffers\\Index.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\SavedOffers\\Index.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\SavedOffers\\Index.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAB0AAABBAAAA",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\Index.cshtml",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\Offers\\Index.cshtml",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\Index.cshtml",
+              "RelativeToolTip": "MarketplaceWebApplication\\Views\\Offers\\Index.cshtml",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAD4AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-04T00:29:59.983Z",
+              "WhenOpened": "2024-03-04T19:08:00.232Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Index.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\OrderItems\\Index.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Index.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\OrderItems\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-04T00:29:24.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\Index.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\Offers\\Index.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\Index.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\Offers\\Index.cshtml",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAABwAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-04T00:28:08.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "MainPageView.cshtml",
               "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
               "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
               "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
               "RelativeToolTip": "MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAF0AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-04T00:26:24.88Z",
+              "WhenOpened": "2024-03-04T18:19:28.741Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Details.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\OrderItems\\Details.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Details.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\OrderItems\\Details.cshtml",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAAD4AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-04T00:05:16.507Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Clients.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Clients.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\OrderItems\\Clients.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Clients.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\OrderItems\\Clients.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-04T00:00:27.93Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "OrderItemsController.cs",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\OrderItemsController.cs",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Controllers\\OrderItemsController.cs",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\OrderItemsController.cs",
-              "RelativeToolTip": "MarketplaceWebApplication\\Controllers\\OrderItemsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwDABAAAUAAAA",
+              "DocumentIndex": 2,
+              "Title": "OffersController.cs",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\OffersController.cs",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Controllers\\OffersController.cs",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\OffersController.cs",
+              "RelativeToolTip": "MarketplaceWebApplication\\Controllers\\OffersController.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAwFwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T23:48:17.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FeedbacksController.cs",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\FeedbacksController.cs",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Controllers\\FeedbacksController.cs",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\FeedbacksController.cs",
-              "RelativeToolTip": "MarketplaceWebApplication\\Controllers\\FeedbacksController.cs",
-              "ViewState": "AQIAAGQAAAAAAAAAAAAcwGsAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T23:31:13.219Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SavedOffersController.cs",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\SavedOffersController.cs",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Controllers\\SavedOffersController.cs",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\SavedOffersController.cs",
-              "RelativeToolTip": "MarketplaceWebApplication\\Controllers\\SavedOffersController.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAowCwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T23:22:07.741Z",
+              "WhenOpened": "2024-03-04T18:19:25.215Z",
               "EditorCaption": ""
             }
           ]

@@ -1,36 +1,32 @@
 ﻿@model IEnumerable<MarketplaceWebApplication.Data.SavedOffer>
-@using Microsoft.AspNetCore.Http
-@using MarketplaceWebApplication.Extensions
-@inject IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Пропозиції";
-    var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+    if (String.IsNullOrEmpty(ViewBag.SearchWord))
+    {
+        ViewBag.SearchWord = "";
+    }
 }
 
-@if (userInfo is null)
+@if (Model.Count() == 0 && String.IsNullOrEmpty(ViewBag.SearchWord))
 {
-    <h1>Ви поки-що не увійшли до кабінету</h1>
-    <a asp-controller="Users" asp-action="Index" asp-route-id="" class="btn btn-primary">Увійти</a>
+    <h1>Ви поки-що не зберегли жодної пропозиції</h1>
 }
 else
 {
-    @if ((Model.Select(model => model.UserId == userInfo.Id)).Count() == 0)
+    <h1>Ваші збережені пропозиції</h1>
+    <form asp-action="Index" asp-controller="SavedOffers" method="get">
+        <label for="Text" class="control-label">Пошук</label>
+        <input name="searchWord" class="form-control" value="@ViewBag.SearchWord" />
+        <button type="submit" class="btn btn-primary" style="margin: 5px;">Шукати</button>
+    </form>
+    if (Model.Count() == 0)
     {
-        <h1>Ви поки-що не зберегли жодної пропозиції</h1>
-        <p>
-            <a asp-action="Create" class="btn btn-primary">Додати свою пропозицію</a>
-        </p>
+        <h1>Нічого не знайдено</h1>
     }
-
     else
     {
-        <h1>Ваші збережені пропозиції</h1>
-        <form asp-action="Index" asp-controller="SavedOffers" method="get">
-            <label for="Text" class="control-label">Пошук</label>
-            <input name="searchWord" class="form-control" />
-            <button type="submit" class="btn btn-primary" style="margin: 5px;">Шукати</button>
-        </form>
         <table class="table">
             <thead>
                 <tr>
@@ -38,13 +34,10 @@ else
                         Назва
                     </th>
                     <th>
-                        Ціна
+                        Ціна (в грн)
                     </th>
                     <th>
                         Фото
-                    </th>
-                    <th>
-                        Кількість замовлень
                     </th>
                     <th>
                         Час створення
@@ -55,52 +48,55 @@ else
                     <th>
                         Категорія
                     </th>
+                    <th>
+                        Рейтинг
+                    </th>
+                    <th>
+                        Продавець
+                    </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    if (item.UserId == userInfo.Id)
-                    {
-                        <tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Offer.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Offer.Price)
+                        </td>
+                        @if (item.Offer.Photo != null && item.Offer.Photo.Length > 0)
+                        {
+                            string base64String = Convert.ToBase64String(item.Offer.Photo);
                             <td>
-                                @Html.DisplayFor(modelItem => item.Offer.Name)
+                                <img src="data:image;base64,@base64String" alt="Photo" style="width:100px; height:auto;" />
                             </td>
+                        }
+                        else
+                        {
                             <td>
-                                @Html.DisplayFor(modelItem => item.Offer.Price)
+                                Фото відсутнє
                             </td>
-                            @if (item.Offer.Photo != null && item.Offer.Photo.Length > 0)
-                            {
-                                string base64String = Convert.ToBase64String(item.Offer.Photo);
-                                <td>
-                                    <img src="data:image;base64,@base64String" alt="Photo" style="width:100px; height:auto;" />
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-                                    Фото відсутнє
-                                </td>
-                            }
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Offer.NumberOfOrders)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Offer.TimeAdded)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Offer.ItemAmount)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Offer.Category.Name)
-                            </td>
-                            <td>
-                                <a asp-controller="Offers" asp-action="Details" asp-route-id="@item.Offer.Id" class="btn btn-primary" style="margin: 5px;">Деталі</a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Видалити</a>
-                            </td>
-                        </tr>
-                    }
+                        }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Offer.TimeAdded)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Offer.ItemAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Offer.Category.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Offer.Seller.Username)
+                        </td>
+                        <td>
+                            <a asp-controller="Offers" asp-action="Details" asp-route-id="@item.Offer.Id" class="btn btn-primary" style="margin: 5px;">Деталі</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Видалити</a>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using MarketplaceWebApplication.Models;
 
 using System.IO;
+using MarketplaceWebApplication.Extensions;
 
 namespace MarketplaceWebApplication.Controllers
 {
@@ -25,22 +26,120 @@ namespace MarketplaceWebApplication.Controllers
         // GET: Offers
         public async Task<IActionResult> Index()
         {
-            var dbmarketplaceContext = _context.Offers.Include(o => o.Category).Include(o => o.Seller);
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+
+            var dbmarketplaceContext = _context.Offers.Include(o => o.Category)
+                .Include(o => o.Seller)
+                .Where(o => o.SellerId == userId);
+
+            List<OffersRatings> ORList = new List<OffersRatings>();
+
+            foreach (var o in dbmarketplaceContext)
+            {
+                var rating = await RatingCounter(o.Id);
+                ORList.Add(rating);
+            }
+
+            ViewData["ORList"] = ORList;
+
             return View(await dbmarketplaceContext.ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchWord)
+        {
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            ViewData["SearchWord"] = searchWord;
+
+            if (string.IsNullOrEmpty(searchWord))
+            {
+                var dbmarketplaceContext = await _context.Offers.Include(o => o.Category)
+                    .Include(o => o.Seller)
+                    .Where(o => o.SellerId == userId)
+                    .ToListAsync();
+
+                List<OffersRatings> ORList = new List<OffersRatings>();
+
+                foreach (var o in dbmarketplaceContext)
+                {
+                    var rating = await RatingCounter(o.Id);
+                    ORList.Add(rating);
+                }
+
+                ViewData["ORList"] = ORList;
+                return View(dbmarketplaceContext);
+            }
+            else
+            {
+                var dbmarketplaceContext = await _context.Offers
+                    .Include(o => o.Category)
+                    .Include(o => o.Seller)
+                    .Where(o => o.Name == searchWord && o.SellerId == userId)
+                    .ToListAsync();
+
+                List<OffersRatings> ORList = new List<OffersRatings>();
+
+                foreach (var o in dbmarketplaceContext)
+                {
+                    var rating = await RatingCounter(o.Id);
+                    ORList.Add(rating);
+                }
+
+                ViewData["ORList"] = ORList;
+                return View(dbmarketplaceContext);
+            }
         }
 
         public async Task<IActionResult> MainPageView()
         {
             var dbmarketplaceContext = _context.Offers.Include(o => o.Category).Include(o => o.Seller);
-            return View(await dbmarketplaceContext.ToListAsync());
+            
+            List<OffersRatings> ORList = new List<OffersRatings>();
+
+            foreach (var o in dbmarketplaceContext) 
+            {
+                var rating = await RatingCounter(o.Id);
+                ORList.Add(rating);
+            }
+
+            ViewData["ORList"] = ORList;
+            return View(dbmarketplaceContext);
         }
 
         [HttpGet]
         public async Task<IActionResult> MainPageView(string searchWord)
         {
+            ViewData["SearchWord"] = searchWord;
+
             if (string.IsNullOrEmpty(searchWord))
             {
-                var dbmarketplaceContext = await _context.Offers.Include(o => o.Category).Include(o => o.Seller).ToListAsync();
+                var dbmarketplaceContext = await _context.Offers.Include(o => o.Category)
+                    .Include(o => o.Seller)
+                    .ToListAsync();
+
+                List<OffersRatings> ORList = new List<OffersRatings>();
+
+                foreach (var o in dbmarketplaceContext)
+                {
+                    var rating = await RatingCounter(o.Id);
+                    ORList.Add(rating);
+                }
+
+                ViewData["ORList"] = ORList;
                 return View(dbmarketplaceContext);
             }
             else
@@ -51,6 +150,15 @@ namespace MarketplaceWebApplication.Controllers
                     .Where(o => o.Name == searchWord)
                     .ToListAsync();
 
+                List<OffersRatings> ORList = new List<OffersRatings>();
+
+                foreach (var o in dbmarketplaceContext)
+                {
+                    var rating = await RatingCounter(o.Id);
+                    ORList.Add(rating);
+                }
+
+                ViewData["ORList"] = ORList;
                 return View(dbmarketplaceContext);
             }
         }
@@ -214,6 +322,16 @@ namespace MarketplaceWebApplication.Controllers
         private bool OfferExists(int id)
         {
             return _context.Offers.Any(e => e.Id == id);
+        }
+
+        private async Task<OffersRatings> RatingCounter(int offerId)
+        {
+            int feedbacksCount = _context.Feedbacks.Count(o => o.OfferId == offerId);
+            if (feedbacksCount == 0) return new OffersRatings { OfferId = offerId, Rating = -1 };
+            var ratingsSum = _context.Feedbacks.Where(f => f.OfferId == offerId)
+                .Sum(f => f.Rating);
+            double meanRating = (double)ratingsSum / feedbacksCount;
+            return new OffersRatings { OfferId = offerId, Rating = meanRating }; 
         }
     }
 }

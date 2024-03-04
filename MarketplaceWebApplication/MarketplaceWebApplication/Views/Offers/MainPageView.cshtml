@@ -1,16 +1,24 @@
 ﻿@model IEnumerable<MarketplaceWebApplication.Data.Offer>
 @using Microsoft.AspNetCore.Http
 @using MarketplaceWebApplication.Extensions
+@using MarketplaceWebApplication.Models
 @inject IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Головна сторінка";
     var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+    if (String.IsNullOrEmpty(ViewBag.SearchWord))
+    {
+        ViewBag.SearchWord = "";
+    }
+
+    List<OffersRatings> ORList = ViewBag.ORList;
 }
 
 <form asp-action="MainPageView" asp-controller="Offers" method="get">
     <label for="Text" class="control-label">Пошук</label>
-    <input name="searchWord" class="form-control" />
+    <input name="searchWord" class="form-control" value="@ViewBag.SearchWord" />
     <button type="submit" class="btn btn-primary" style="margin: 5px;">Шукати</button>
 </form>
 
@@ -28,13 +36,10 @@ else
                     Назва
                 </th>
                 <th>
-                    Ціна(в грн)
+                    Ціна (в грн)
                 </th>
                 <th>
                     Фото
-                </th>
-                <th>
-                    Кількість замовлень
                 </th>
                 <th>
                     Час створення
@@ -46,8 +51,12 @@ else
                     Категорія
                 </th>
                 <th>
+                    Рейтинг
+                </th>
+                <th>
                     Продавець
                 </th>
+
                 <th></th>
             </tr>
         </thead>
@@ -74,9 +83,6 @@ else
                     </td>
                 }
                 <td>
-                    @Html.DisplayFor(modelItem => item.NumberOfOrders)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.TimeAdded)
                 </td>
                 <td>
@@ -85,6 +91,21 @@ else
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.Name)
                 </td>
+                @{
+                    var rating = ORList.FirstOrDefault(or => or.OfferId == item.Id).Rating;
+                    if (rating != -1)
+                    {
+                        <td>
+                            @rating
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Немає відгуків
+                        </td>
+                    }
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.Seller.Username)
                 </td>
