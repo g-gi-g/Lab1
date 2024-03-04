@@ -312,7 +312,8 @@ namespace MarketplaceWebApplication.Controllers
             var offer = await _context.Offers.FindAsync(id);
             if (offer != null)
             {
-                _context.Offers.Remove(offer);
+                offer.IsDeleted = true;
+                _context.Offers.Update(offer);
             }
 
             await _context.SaveChangesAsync();
