@@ -182,6 +182,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJzXE1haW5QYWdlVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/OrderItems/Clients.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtc1xDbGllbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/OrderItems/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -220,10 +224,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/OrderStatus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJTdGF0dXNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Orders/Clients.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENsaWVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Orders/Create.cshtml]

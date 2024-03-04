@@ -26,6 +26,11 @@ else
     else
     {
         <h1>Ваші збережені пропозиції</h1>
+        <form asp-action="Index" asp-controller="SavedOffers" method="get">
+            <label for="Text" class="control-label">Пошук</label>
+            <input name="searchWord" class="form-control" />
+            <button type="submit" class="btn btn-primary" style="margin: 5px;">Шукати</button>
+        </form>
         <table class="table">
             <thead>
                 <tr>

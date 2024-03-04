@@ -1,4 +1,4 @@
-﻿@model MarketplaceWebApplication.Models.OrderItemForm
+﻿@model MarketplaceWebApplication.Models.OrderItemCreationForm
 
 @{
     ViewData["Title"] = "Створити замовлення";
@@ -50,8 +50,40 @@
                 <input asp-for="Comment" class="form-control" />
                 <span asp-validation-for="Comment" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Створити" class="btn btn-primary" style="margin: 5px;" />
+                <label for="ShippingCompanyId" class="control-label">Компанія доставки</label>
+                <select asp-for="ShippingCompanyId" class="form-control" asp-items="ViewBag.ShippingCompany"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="ArrivalCountry" class="control-label">Країна</label>
+                <input asp-for="ArrivalCountry" class="form-control" />
+                <span asp-validation-for="ArrivalCountry" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ArrivalCity" class="control-label">Місто</label>
+                <input asp-for="ArrivalCity" class="form-control" />
+                <span asp-validation-for="ArrivalCity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ArrivalStreet" class="control-label">Вулиця</label>
+                <input asp-for="ArrivalStreet" class="form-control" />
+                <span asp-validation-for="ArrivalStreet" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ArrivalBuildingNumber" class="control-label">Номер будинку</label>
+                <input asp-for="ArrivalBuildingNumber" class="form-control" />
+                <span asp-validation-for="ArrivalBuildingNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ArrivalZipCode" class="control-label">Поштовий індекс</label>
+                <input asp-for="ArrivalZipCode" class="form-control" />
+                <span asp-validation-for="ArrivalZipCode" class="text-danger"></span>
             </div>
 
             <div class="form-group">

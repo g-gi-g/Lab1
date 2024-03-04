@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarketplaceWebApplication.Data;
+using MarketplaceWebApplication.Extensions;
+using MarketplaceWebApplication.Models;
 
 namespace MarketplaceWebApplication.Controllers
 {
@@ -21,7 +23,19 @@ namespace MarketplaceWebApplication.Controllers
         // GET: Notifications
         public async Task<IActionResult> Index()
         {
-            var dbmarketplaceContext = _context.Notifications.Include(n => n.Class).Include(n => n.User);
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+
+            var dbmarketplaceContext = _context.Notifications.Include(n => n.Class)
+                .Include(n => n.User)
+                .Where(n => n.UserId == userId);
+
             return View(await dbmarketplaceContext.ToListAsync());
         }
 
@@ -54,8 +68,6 @@ namespace MarketplaceWebApplication.Controllers
         }
 
         // POST: Notifications/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UserId,Title,Text,IsWatched,ClassId,TimeAdded")] Notification notification)

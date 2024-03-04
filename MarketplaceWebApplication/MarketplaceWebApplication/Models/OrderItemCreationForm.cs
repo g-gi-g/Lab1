@@ -1,6 +1,6 @@
 ﻿namespace MarketplaceWebApplication.Models
 {
-    public class OrderItemForm
+    public class OrderItemCreationForm
     {
         public int OfferId { get; set; }
 
@@ -33,15 +33,5 @@
         public string ArrivalBuildingNumber { get; set; } = null!;
 
         public string ArrivalZipCode { get; set; } = null!;
-
-        public string DepartmentCountry { get; set; } = null!;
-
-        public string DepartmentCity { get; set; } = null!;
-
-        public string DepartmentStreet { get; set; } = null!;
-
-        public string DepartmentBuildingNumber { get; set; } = null!;
-
-        public string DepartmentZipCode { get; set; } = null!;
     }
 }

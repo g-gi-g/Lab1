@@ -26,6 +26,11 @@ else
     else 
     {
         <h1>Ваші товари</h1>
+        <form asp-action="Index" asp-controller="Offer" method="get">
+            <label for="Text" class="control-label">Пошук</label>
+            <input name="searchWord" class="form-control" />
+            <button type="submit" class="btn btn-primary" style="margin: 5px;">Шукати</button>
+        </form>
         <p>
             <a asp-action="Create" class="btn btn-primary">Додати свою пропозицію</a>
         </p>

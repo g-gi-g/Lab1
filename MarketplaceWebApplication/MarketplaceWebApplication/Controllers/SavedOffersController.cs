@@ -42,6 +42,22 @@ namespace MarketplaceWebApplication.Controllers
             {
                 _context.Add(saved);
                 await _context.SaveChangesAsync();
+
+                var of = await _context.Offers.FirstOrDefaultAsync(o => o.Id == id);
+
+                Notification notif = new Notification
+                {
+                    Title = "Ви зберігли пропозицію",
+                    Text = "Ви зберігли пропозицію " + of.Name + "!",
+                    TimeAdded = DateTime.Now,
+                    ClassId = 4,
+                    IsWatched = false,
+                    UserId = saved.UserId,
+                };
+
+                _context.Add(notif);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return NotFound();

@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<MarketplaceWebApplication.Data.OrderItem>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Мої замовлення";
 }
 
-<h1>Index</h1>
+<h1>Мої замовлення</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<form asp-action="Index" asp-controller="OrderItems" method="get">
+    <label for="Text" class="control-label">Пошук</label>
+    <input name="searchWord" class="form-control" />
+    <button type="submit" class="btn btn-primary" style="margin: 5px;">Шукати</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>

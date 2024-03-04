@@ -93,16 +93,31 @@ namespace MarketplaceWebApplication.Controllers
 
             if (ModelState.IsValid)
             {
-                Feedback fr = new Feedback 
+                Feedback fb = new Feedback 
                 {
                     OfferId = feedback.OfferId,
+                    Rating = feedback.Rating,
                     UserId = feedback.UserId,
                     Text = feedback.Text,
                     TimeAdded = feedback.TimeAdded,
                 };
-                _context.Add(fr);
+                _context.Add(fb);
+
+                var of = await _context.Offers.FirstOrDefaultAsync(o => o.Id == fb.OfferId);
+
+                Notification notif = new Notification
+                {
+                    Title = "Ви залишили відгук",
+                    Text = "Ви залишили відгук на пропозицію " + of.Name + "!",
+                    TimeAdded = DateTime.Now,
+                    ClassId = 4,
+                    IsWatched = false,
+                    UserId = fb.UserId,
+                };
+                _context.Add(notif);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction(nameof(Index), new { id = fb.OfferId });
             }
 
             var offer = _context.Offers.FirstOrDefault(o => o.Id == feedback.OfferId);

@@ -19,6 +19,9 @@
                 Час створення
             </th>
             <th>
+                Користувач
+            </th>
+            <th>
             <th></th>
         </tr>
     </thead>
@@ -33,6 +36,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TimeAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Username)
             </td>
             @if (item.UserId == ViewBag.UserId)
             {
