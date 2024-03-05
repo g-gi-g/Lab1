@@ -11,6 +11,7 @@ using MarketplaceWebApplication.Models;
 
 using System.IO;
 using MarketplaceWebApplication.Extensions;
+using System.Collections;
 
 namespace MarketplaceWebApplication.Controllers
 {
@@ -186,7 +187,7 @@ namespace MarketplaceWebApplication.Controllers
         // GET: Offers/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.OfferCategories, "Id", "Id");
+            ViewData["Category"] = new SelectList(_context.OfferCategories, "Id", "Name");
             ViewData["SellerId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
@@ -224,7 +225,7 @@ namespace MarketplaceWebApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.OfferCategories, "Id", "Id", offer.CategoryId);
+            ViewData["Category"] = new SelectList(_context.OfferCategories, "Id", "Name", offer.CategoryId);
             ViewData["SellerId"] = new SelectList(_context.Users, "Id", "Id", offer.SellerId);
             return View(offer);
         }
@@ -237,12 +238,29 @@ namespace MarketplaceWebApplication.Controllers
                 return NotFound();
             }
 
-            var offer = await _context.Offers.FindAsync(id);
-            if (offer == null)
+            var oldOffer = await _context.Offers.FindAsync(id);
+
+            if (oldOffer == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.OfferCategories, "Id", "Id", offer.CategoryId);
+
+            OfferModel offer = new OfferModel();
+
+            offer.Id = oldOffer.Id;
+            offer.Name = oldOffer.Name;
+            offer.Price = oldOffer.Price;
+            offer.Description = oldOffer.Description;
+            offer.CategoryId = oldOffer.CategoryId;
+            offer.SellerId = oldOffer.SellerId;
+            offer.Photo = new FormFile(new MemoryStream(oldOffer.Photo), 0, oldOffer.Photo.Length, "name", "filename.jpg");
+            offer.NumberOfOrders = oldOffer.NumberOfOrders;
+            offer.IsDeleted = oldOffer.IsDeleted;
+            offer.IsHidden = oldOffer.IsHidden;
+            offer.ItemAmount = oldOffer.ItemAmount;
+            offer.TimeAdded = oldOffer.TimeAdded;
+
+            ViewData["Category"] = new SelectList(_context.OfferCategories, "Id", "Name", offer.CategoryId);
             ViewData["SellerId"] = new SelectList(_context.Users, "Id", "Id", offer.SellerId);
             return View(offer);
         }
@@ -252,17 +270,37 @@ namespace MarketplaceWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SellerId,Name,Price,Description,Photo,NumberOfOrders,CategoryId,TimeAdded,IsDeleted,IsHidden,ItemAmount")] Offer offer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,SellerId,Name,Price,Description,Photo,NumberOfOrders,CategoryId,TimeAdded,IsDeleted,IsHidden,ItemAmount")] OfferModel newOffer)
         {
-            if (id != offer.Id)
+            if (id != newOffer.Id)
             {
                 return NotFound();
             }
+
+            Offer offer = new Offer();
 
             if (ModelState.IsValid)
             {
                 try
                 {
+                    offer.Id = newOffer.Id;
+                    offer.Name = newOffer.Name;
+                    offer.Price = newOffer.Price;
+                    offer.Description = newOffer.Description;
+                    offer.CategoryId =  newOffer.CategoryId;
+                    offer.SellerId = newOffer.SellerId;
+                    offer.NumberOfOrders = newOffer.NumberOfOrders;
+                    offer.IsDeleted = newOffer.IsDeleted;
+                    offer.IsHidden = newOffer.IsHidden;
+                    offer.ItemAmount = newOffer.ItemAmount;
+                    offer.TimeAdded = newOffer.TimeAdded;
+
+                    Stream stream = newOffer.Photo.OpenReadStream();
+                    BinaryReader reader = new BinaryReader(stream);
+                    offer.Photo = reader.ReadBytes((int)stream.Length);
+                    reader.Close();
+                    stream.Close();
+
                     _context.Update(offer);
                     await _context.SaveChangesAsync();
                 }
@@ -279,7 +317,7 @@ namespace MarketplaceWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.OfferCategories, "Id", "Id", offer.CategoryId);
+            ViewData["Category"] = new SelectList(_context.OfferCategories, "Id", "Name", offer.CategoryId);
             ViewData["SellerId"] = new SelectList(_context.Users, "Id", "Id", offer.SellerId);
             return View(offer);
         }

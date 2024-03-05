@@ -2,13 +2,18 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+@using Microsoft.AspNetCore.Http
+@using MarketplaceWebApplication.Extensions
+@using MarketplaceWebApplication.Models
+@inject IHttpContextAccessor HttpContextAccessor
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MarketplaceWebApplication</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap_sandstone.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MarketplaceWebApplication.styles.css" asp-append-version="true" />
 </head>
@@ -43,6 +48,17 @@
                         </li>
                     </ul>
                     <ul class="nav justify-content-end flex-grow-1">
+                        @{
+                            var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+                            if (userInfo is null)
+                            {
+                                <a class="nav-link text-dark" asp-area="">Ви не увійшли в обліковий запис</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link text-dark" asp-area="">Доброго дня, @userInfo.Username</a>
+                            }
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Кабінет</a>
                         </li>

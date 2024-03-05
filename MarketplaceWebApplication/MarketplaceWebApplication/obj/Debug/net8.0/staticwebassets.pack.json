@@ -149,6 +149,14 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
+      "Id": "E:\\ІСтаТП\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap_sandstone.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap_sandstone.css"
+    },
+    {
+      "Id": "E:\\ІСтаТП\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap_sandstone.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap_sandstone.min.css"
+    },
+    {
       "Id": "E:\\ІСтаТП\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },

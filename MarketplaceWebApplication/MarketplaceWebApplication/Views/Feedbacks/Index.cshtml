@@ -1,56 +1,33 @@
 ﻿@model IEnumerable<MarketplaceWebApplication.Data.Feedback>
+@using Microsoft.AspNetCore.Http
+@using MarketplaceWebApplication.Extensions
+@using MarketplaceWebApplication.Models
+@inject IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Відгуки";
+    var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
 }
 
-<h1>Відгуки</h1>
+<h3>Відгуки</h3>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Оцінка
-            </th>
-            <th>
-                Вміст
-            </th>
-            <th>
-                Час створення
-            </th>
-            <th>
-                Користувач
-            </th>
-            <th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeAdded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Username)
-            </td>
-            @if (item.UserId == ViewBag.UserId)
+@foreach (var item in Model)
+{
+    <div class="card">
+        <h5 class="card-header">@item.User.Username</h5>
+        <div class="card-body">
+            <h5 class="card-title">@item.Rating / 5</h5>
+            <p class="card-text">@item.Text</p>
+            <p class="card-text">@item.TimeAdded</p>
+            @if (userInfo is not null && userInfo.Id == item.UserId)
             {
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Видалити</a>
-                </td>
+                <a href="@Url.Action("Delete", "Feedbacks", new { id = item.Id })" class="btn btn-danger">Видалити</a>
             }
-        </tr>
+        </div>
+    </div>
+    <hr />
 }
-    </tbody>
-</table>
 
 <var>
-    <a asp-controller="Offers" asp-action="MainPageView">Назад</a>
+    <a asp-controller="Offers" asp-action="MainPageView" class="btn btn-primary">Назад</a>
 </var>

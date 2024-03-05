@@ -157,12 +157,12 @@
 <div>
     @if (ViewBag.Offer.SellerId == ViewBag.UserId)
     {
-        <a asp-action="Edit" asp-route-id="@Model?.Id">Редагувати</a>
-        <a asp-action="Clients">Назад</a>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Редагувати</a>
+        <a asp-action="Clients" class="btn btn-primary">Назад</a>
     }
     else
     {
-        <a asp-action="Index" asp-route-id="@Model?.Id">Назад</a>
+        <a asp-action="Index" asp-route-id="@Model?.Id" class="btn btn-primary">Назад</a>
     }
-    <a asp-action="Delete">Видалити</a>
+    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Видалити</a>
 </div>

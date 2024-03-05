@@ -15,12 +15,14 @@
 
     List<OffersRatings> ORList = ViewBag.ORList;
 }
-
-<form asp-action="MainPageView" asp-controller="Offers" method="get">
-    <label for="Text" class="control-label">Пошук</label>
-    <input name="searchWord" class="form-control" value="@ViewBag.SearchWord" />
-    <button type="submit" class="btn btn-primary" style="margin: 5px;">Шукати</button>
+<hr />
+<label for="Text" class="control-label" style="margin-right: 10px;">Пошук</label>
+<form asp-action="MainPageView" asp-controller="Offers" method="get" style="display: flex; align-items: center;">
+    <input name="searchWord" class="form-control" value="@ViewBag.SearchWord" style="margin-right: 10px;" />
+    <button type="submit" class="btn btn-primary">Шукати</button>
 </form>
+
+<hr />
 
 @if (Model.Count() == 0)
 {
@@ -28,99 +30,80 @@
 }
 else
 {
-    <h1>Ласкаво просимо! Що хочете придбати або продати сьогодні?</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Назва
-                </th>
-                <th>
-                    Ціна (в грн)
-                </th>
-                <th>
-                    Фото
-                </th>
-                <th>
-                    Час створення
-                </th>
-                <th>
-                    Кількість товару
-                </th>
-                <th>
-                    Категорія
-                </th>
-                <th>
-                    Рейтинг
-                </th>
-                <th>
-                    Продавець
-                </th>
-
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                @if (item.Photo != null && item.Photo.Length > 0)
-                {
-                    string base64String = Convert.ToBase64String(item.Photo);
-                    <td>
-                        <img src="data:image;base64,@base64String" alt="Photo" style="width:100px; height:auto;" />
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        Фото відсутнє
-                    </td>
-                }
-                <td>
-                    @Html.DisplayFor(modelItem => item.TimeAdded)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ItemAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                @{
-                    var rating = ORList.FirstOrDefault(or => or.OfferId == item.Id).Rating;
-                    if (rating != -1)
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        @if (!item.IsDeleted && !item.IsHidden)
+        {
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    @if (item.Photo != null && item.Photo.Length > 0)
                     {
-                        <td>
-                            @rating
-                        </td>
+                        string base64String = Convert.ToBase64String(item.Photo);
+                        <img src="data:image;base64,@base64String" class="card-img-top" alt="Photo" />
                     }
                     else
                     {
-                        <td>
-                            Немає відгуків
-                        </td>
+                        <div class="card-img-top" style="background-color: #f0f0f0; height: 200px;"></div>
                     }
-                }
-                <td>
-                    @Html.DisplayFor(modelItem => item.Seller.Username)
-                </td>
-                <td>
-                    @if (userInfo is not null && item.SellerId != userInfo.Id)
-                    {
-                        <a asp-controller="OrderItems" asp-action="Create" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Замовити</a>
-                        <a asp-controller="SavedOffers" asp-action="Save" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Зберегти</a>
-                        <a asp-controller="Feedbacks" asp-action="Create" asp-route-id=@item.Id class="btn btn-primary" style="margin: 5px;">Додати відгук</a>
-                    }
-                    <a asp-controller="Feedbacks" asp-action="Index" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Відгуки</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Деталі</a>
-                </td>
-            </tr>
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Price) грн</p>
+                        <p class="card-text">Кількість в наявності: @Html.DisplayFor(modelItem => item.ItemAmount)</p>
+                        @{
+                            var rating = ORList.FirstOrDefault(or => or.OfferId == item.Id).Rating;
+                            if (rating != -1)
+                            {
+                                <p class="card-text">Рейтинг: @(Math.Floor(rating)) / 5</p>
+                            }
+                            else
+                            {
+                                <p class="card-text">Немає відгуків</p>
+                            }
+                        }
+                        <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Category.Name)</p>
+                        <p class="card-text">Продавець: @Html.DisplayFor(modelItem => item.Seller.Username)</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @if (userInfo is not null && item.SellerId != userInfo.Id)
+                        {
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Create", "OrderItems", new { id = item.Id })" class="btn btn-primary mt-auto w-100">Замовити</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Save", "SavedOffers", new { id = item.Id })" class="btn btn-primary mt-auto w-100">Зберегти</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="@Url.Action("Create", "Feedbacks", new { id = item.Id })" class="btn btn-primary mt-auto w-100">Додати відгук</a>
+                            </li>
+                        }
+                        <li class="list-group-item">
+                            <a href="@Url.Action("Index", "Feedbacks", new { id = item.Id })" class="btn btn-primary mt-auto w-100">Відгуки</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="@Url.Action("Details", "Offers", new { id = item.Id })" class="btn btn-primary mt-auto w-100">Деталі</a>
+                        </li>
+                    </ul>
+                    <div class="card-body">
+                        <p class="card-text">Час створення: @Html.DisplayFor(modelItem => item.TimeAdded)</p>
+                    </div>
+                </div>
+            </div>
+        }
     }
-        </tbody>
-    </table>
+    </div>
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxHeight = 0;
+        $('.card').each(function () {
+            var cardHeight = $(this).height();
+            if (cardHeight > maxHeight) {
+                maxHeight = cardHeight;
+            }
+        });
+        $('.card').height(maxHeight);
+    });
+</script>

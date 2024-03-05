@@ -120,7 +120,7 @@ namespace MarketplaceWebApplication.Controllers
                     Title = "Ви залишили відгук",
                     Text = "Ви залишили відгук на пропозицію " + of.Name + "!",
                     TimeAdded = DateTime.Now,
-                    ClassId = 4,
+                    ClassId = 5,
                     IsWatched = false,
                     UserId = fb.UserId,
                 };

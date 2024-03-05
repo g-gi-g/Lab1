@@ -32,7 +32,7 @@ namespace MarketplaceWebApplication.Controllers
 
             int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
 
-            var dbmarketplaceContext = _context.OrderItems.Include(o => o.Offer)
+            var dbmarketplaceContext = _context.OrderItems.Include(o => o.Offer).ThenInclude(s => s.Seller)
                 .Include(o => o.Order)
                 .Where(o => o.Order.CustomerId == userId);
             return View(await dbmarketplaceContext.ToListAsync());
@@ -53,7 +53,7 @@ namespace MarketplaceWebApplication.Controllers
 
             if (string.IsNullOrEmpty(searchWord))
             {
-                var dbmarketplaceContext = await _context.OrderItems.Include(o => o.Offer)
+                var dbmarketplaceContext = await _context.OrderItems.Include(o => o.Offer).ThenInclude(s => s.Seller)
                     .Include(o => o.Order)
                     .Where(o => o.Order.CustomerId == userId)
                     .ToListAsync();
@@ -61,7 +61,7 @@ namespace MarketplaceWebApplication.Controllers
             }
             else
             {
-                var dbmarketplaceContext = await _context.OrderItems.Include(o => o.Offer)
+                var dbmarketplaceContext = await _context.OrderItems.Include(o => o.Offer).ThenInclude(s => s.Seller)
                     .Include(o => o.Order)
                     .Where(o => o.Order.CustomerId == userId && o.Offer.Name == searchWord)
                     .ToListAsync();
@@ -80,7 +80,7 @@ namespace MarketplaceWebApplication.Controllers
 
             int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
 
-            var dbmarketplaceContext = _context.OrderItems.Include(o => o.Offer)
+            var dbmarketplaceContext = _context.OrderItems.Include(o => o.Offer).ThenInclude(s => s.Seller)
                 .Include(o => o.Order)
                 .Where(o => o.Offer.SellerId == userId);
             return View(await dbmarketplaceContext.ToListAsync());
@@ -101,16 +101,16 @@ namespace MarketplaceWebApplication.Controllers
 
             if (string.IsNullOrEmpty(searchWord))
             {
-                var dbmarketplaceContext = await _context.OrderItems.Include(o => o.Offer)
-                    .Include(o => o.Order)
+                var dbmarketplaceContext = await _context.OrderItems.Include(o => o.Offer).ThenInclude(s => s.Seller)
+                    .Include(o => o.Order).ThenInclude(s => s.Customer)
                     .Where(o => o.Offer.SellerId == userId)
                     .ToListAsync();
                 return View(dbmarketplaceContext);
             }
             else
             {
-                var dbmarketplaceContext = await _context.OrderItems.Include(o => o.Offer)
-                    .Include(o => o.Order)
+                var dbmarketplaceContext = await _context.OrderItems.Include(o => o.Offer).ThenInclude(s => s.Seller)
+                    .Include(o => o.Order).ThenInclude(s => s.Customer)
                     .Where(o => o.Offer.SellerId == userId && o.Offer.Name == searchWord)
                     .ToListAsync();
                 return View(dbmarketplaceContext);

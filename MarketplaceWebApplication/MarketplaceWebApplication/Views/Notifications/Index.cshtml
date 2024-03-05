@@ -4,45 +4,18 @@
     ViewData["Title"] = "Повідомлення";
 }
 
-<h1>Ваші повідомлення</h1>
+<h3>Ваші повідомлення</h3>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Загаловок
-            </th>
-            <th>
-                Текст
-            </th>
-            <th>
-                Час створення
-            </th>
-            <th>
-                Тип
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeAdded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Class.Name)
-            </td>
-            <td>
-                <a asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
-            </td>
-        </tr>
+    <div class="card">
+        <h5 class="card-header">@item.Class.Name</h5>
+        <div class="card-body">
+            <h5 class="card-title">@item.Title</h5>
+            <p class="card-text">@item.Text</p>
+            <p class="card-text">@item.TimeAdded</p>
+            <a href="@Url.Action("Delete", "Notifications", new { id = item.Id })" class="btn btn-danger">Видалити</a>
+        </div>
+    </div>
+    <hr />
 }
-    </tbody>
-</table>

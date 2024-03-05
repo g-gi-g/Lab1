@@ -15,90 +15,106 @@
 }
 else
 {
-    <h1>Ваші збережені пропозиції</h1>
-    <form asp-action="Index" asp-controller="SavedOffers" method="get">
-        <label for="Text" class="control-label">Пошук</label>
-        <input name="searchWord" class="form-control" value="@ViewBag.SearchWord" />
-        <button type="submit" class="btn btn-primary" style="margin: 5px;">Шукати</button>
+    <p><h2 style="text-align:center">Ваші збережені пропозиції</h2></p>
+    <hr />
+    <label for="Text" class="control-label" style="margin-right: 10px;">Пошук</label>
+    <form asp-action="Index" asp-controller="SavedOffers" method="get" style="display: flex; align-items: center;">
+        <input name="searchWord" class="form-control" value="@ViewBag.SearchWord" style="margin-right: 10px;" />
+        <button type="submit" class="btn btn-primary">Шукати</button>
     </form>
+    <hr />
     if (Model.Count() == 0)
     {
-        <h1>Нічого не знайдено</h1>
+        <h1 style ="text-align:center">Нічого не знайдено</h1>
     }
     else
     {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Назва
-                    </th>
-                    <th>
-                        Ціна (в грн)
-                    </th>
-                    <th>
-                        Фото
-                    </th>
-                    <th>
-                        Час створення
-                    </th>
-                    <th>
-                        Кількість в наявності
-                    </th>
-                    <th>
-                        Категорія
-                    </th>
-                    <th>
-                        Рейтинг
-                    </th>
-                    <th>
-                        Продавець
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Offer.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Offer.Price)
-                        </td>
-                        @if (item.Offer.Photo != null && item.Offer.Photo.Length > 0)
-                        {
-                            string base64String = Convert.ToBase64String(item.Offer.Photo);
-                            <td>
-                                <img src="data:image;base64,@base64String" alt="Photo" style="width:100px; height:auto;" />
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                Фото відсутнє
-                            </td>
-                        }
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Offer.TimeAdded)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Offer.ItemAmount)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Offer.Category.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Offer.Seller.Username)
-                        </td>
-                        <td>
-                            <a asp-controller="Offers" asp-action="Details" asp-route-id="@item.Offer.Id" class="btn btn-primary" style="margin: 5px;">Деталі</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary" style="margin: 5px;">Видалити</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    @if (!item.Offer.IsDeleted && !item.Offer.IsHidden) 
+                    {
+                        <div class="card" style="width: 18rem;">
+                            @if (item.Offer.Photo != null && item.Offer.Photo.Length > 0)
+                            {
+                                string base64String = Convert.ToBase64String(item.Offer.Photo);
+                                <img src="data:image;base64,@base64String" class="card-img-top" alt="Photo" />
+                            }
+                            else
+                            {
+                                <div class="card-img-top" style="background-color: #f0f0f0; height: 200px;"></div>
+                            }
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Offer.Name)</h5>
+                                <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Offer.Price) грн</p>
+                                <p class="card-text">Кількість в наявності: @Html.DisplayFor(modelItem => item.Offer.ItemAmount)</p>
+                                <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
+                                <p class="card-text">Продавець: @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="@Url.Action("Details", "Offers", new { id = item.Offer.Id })" class="btn btn-primary mt-auto w-100">Деталі</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="@Url.Action("Create", "OrderItems", new { id = item.Offer.Id })" class="btn btn-primary mt-auto w-100">Замовити</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="@Url.Action("Delete", "SavedOffers", new { id = item.Id })" class="btn btn-danger mt-auto w-100">Видалити</a>
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <p class="card-text">Час створення: @Html.DisplayFor(modelItem => item.TimeAdded)</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card bg-secondary" style="width: 18rem;">
+                            @if (item.Offer.Photo != null && item.Offer.Photo.Length > 0)
+                            {
+                                string base64String = Convert.ToBase64String(item.Offer.Photo);
+                                <img src="data:image;base64,@base64String" class="card-img-top" alt="Photo" />
+                            }
+                            else
+                            {
+                                <div class="card-img-top" style="background-color: #f0f0f0; height: 200px;"></div>
+                            }
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Offer.Name)</h5>
+                                <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Offer.Price) грн</p>
+                                <p class="card-text">Кількість в наявності: Недоступний</p>
+                                <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
+                                <p class="card-text">Продавець: @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-secondary">
+                                    <a href="@Url.Action("Details", "Offers", new { id = item.Offer.Id })" class="btn btn-primary mt-auto w-100">Деталі</a>
+                                </li>
+                                <li class="list-group-item bg-secondary">
+                                    <a href="@Url.Action("Delete", "SavedOffers", new { id = item.Id })" class="btn btn-danger mt-auto w-100">Видалити</a>
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <p class="card-text">Час створення: @Html.DisplayFor(modelItem => item.TimeAdded)</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
     }
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxHeight = 0;
+        $('.card').each(function () {
+            var cardHeight = $(this).height();
+            if (cardHeight > maxHeight) {
+                maxHeight = cardHeight;
+            }
+        });
+        $('.card').height(maxHeight);
+    });
+</script>
