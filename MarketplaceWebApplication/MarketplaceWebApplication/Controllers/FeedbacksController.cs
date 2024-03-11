@@ -47,7 +47,7 @@ namespace MarketplaceWebApplication.Controllers
                 .Include(f => f.User)
                 .Where(f => f.Offer.Id == id);
 
-
+            //ViewData["OfferId"] = id;
             return View(await dbmarketplaceContext.ToListAsync());
         }
 
@@ -89,6 +89,7 @@ namespace MarketplaceWebApplication.Controllers
             var user = _context.Users.FirstOrDefault(u => u.Id == userId);
             ViewData["UserId"] = new SelectList(new List<User> { user }, "Id", "Id");
 
+            ViewData["User"] = user.Id;
             return View();
         }
 

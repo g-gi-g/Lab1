@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "ContainingType": "MarketplaceWebApplication.Controllers.ChartsController",
+    "Method": "GetCountByRatingAsync",
+    "RelativePath": "api/Charts/countByRating",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

@@ -12,7 +12,7 @@
 
 @if (Model.Count() == 0 && String.IsNullOrEmpty(ViewBag.SearchWord))
 {
-    <h1>Ви поки-що нічого не замовили</h1>
+    <h3 style="text-align:center">Ви поки-що нічого не замовили</h3>
 }
 else
 {
@@ -25,7 +25,7 @@ else
     <hr />
     if (Model.Count() == 0)
     {
-        <h1>Нічого не знайдено</h1>
+        <h1 style="text-align:center">Нічого не знайдено</h1>
     }
     else
     {

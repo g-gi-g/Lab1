@@ -135,27 +135,20 @@ namespace MarketplaceWebApplication.Controllers
             }
 
             var orderItem = await _context.OrderItems
-                .Include(o => o.Offer)
-                .Include(o => o.Order)
+                .Include(o => o.Offer).ThenInclude(s => s.Seller)
+                .Include(o => o.Order).ThenInclude(c => c.Customer)
+                .Include(o => o.Order).ThenInclude(s => s.Status)
+                .Include(o => o.Order).ThenInclude(p => p.PaymentMethod)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (orderItem == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == orderItem.OrderId);
             var shipping = await _context.Shippings.FirstOrDefaultAsync(s => s.OrderId == orderItem.OrderId);
-            var offer = await _context.Offers.FirstOrDefaultAsync(o => o.Id == orderItem.OfferId);
-            ViewData["Offer"] = offer;
-            ViewData["Order"] = order;
             ViewData["Shipping"] = shipping;
-
             ViewData["UserId"] = userId;
-            ViewData["Status"] = await _context.OrderStatuses.FirstOrDefaultAsync(os => os.Id == order.StatusId);
-            ViewData["PaymentMethod"] = await _context.PaymentMethods.FirstOrDefaultAsync(p => p.Id == order.PaymentMethodId);
             ViewData["ShippingCompany"] = await _context.ShippingCompanies.FirstOrDefaultAsync(s => s.Id == shipping.ShippingCompanyId);
-            ViewData["Seller"] = await _context.Users.FirstOrDefaultAsync(s => s.Id == offer.SellerId);
-            ViewData["Customer"] = await _context.Users.FirstOrDefaultAsync(s => s.Id == order.CustomerId);
             return View(orderItem);
         }
 

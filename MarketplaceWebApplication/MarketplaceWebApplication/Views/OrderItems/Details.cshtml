@@ -4,165 +4,55 @@
     ViewData["Title"] = "Деталі";
 }
 
-<h1>Деталі</h1>
-
-<div>
-    <h4>замовлення</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            Ціна
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            Кількість
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-2">
-            Назва товару
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Offer.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            Номер замовлення
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Order.Id)
-        </dd>
-        <dt class="col-sm-2">
-            Фото
-        </dt>
-        @if (ViewBag.Offer.Photo != null && ViewBag.Offer.Photo.Length > 0)
-        {
-            string base64String = Convert.ToBase64String(ViewBag.Offer.Photo);
-            <dd class="col-sm-10">
-                <img src="data:image;base64,@base64String" alt="Photo" style="width:200px; height:auto;" />
-            </dd>
-        }
-        else
-        {
-            <dd class="col-sm-10">
-                Фото відсутнє
-            </dd>
-        }
-        <dt class="col-sm-2">
-            Ім'я продавця
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Seller.Username
-        </dd>
-        <dt class="col-sm-2">
-            Ім'я замовника
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Customer.Username
-        </dd>
-        <dt class="col-sm-2">
-            Статус замовлення
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Status.Name
-        </dd>
-        <dt class="col-sm-2">
-            Дата замовлення
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.DateOfOrder)
-        </dd>
-        <dt class="col-sm-2">
-            Метод оплати
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.PaymentMethod.Name
-        </dd>
-        <dt class="col-sm-2">
-            Коментар
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.Comment)
-        </dd>
-        <dt class="col-sm-2">
-            Компанія доставки
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.ShippingCompany.Name
-        </dd>
-        <dt class="col-sm-2">
-            Країна прибуття
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.ArrivalCountry
-        </dd>
-        <dt class="col-sm-2">
-            Місто прибуття
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.ArrivalCity
-        </dd>
-        <dt class="col-sm-2">
-            Вулиця прибуття
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.ArrivalStreet
-        </dd>
-        <dt class="col-sm-2">
-            Будинок прибуття
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.ArrivalBuildingNumber
-        </dd>
-        <dt class="col-sm-2">
-            Поштовий індекс отримувача
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.ArrivalZipCode
-        </dd>
-        <dt class="col-sm-2">
-            Країна відправлення
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.DepartmentCountry
-        </dd>
-        <dt class="col-sm-2">
-            Місто відправлення
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.DepartmentCity
-        </dd>
-        <dt class="col-sm-2">
-            Вулиця відправлення
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.DepartmentStreet
-        </dd>
-        <dt class="col-sm-2">
-            Будинок відправлення
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.DepartmentBuildingNumber
-        </dd>
-        <dt class="col-sm-2">
-            Поштовий індекс відправника
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.Shipping.DepartmentZipCode
-        </dd>
-    </dl>
-</div>
-<div>
-    @if (ViewBag.Offer.SellerId == ViewBag.UserId)
-    {
-        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Редагувати</a>
-        <a asp-action="Clients" class="btn btn-primary">Назад</a>
-    }
-    else
-    {
-        <a asp-action="Index" asp-route-id="@Model?.Id" class="btn btn-primary">Назад</a>
-    }
-    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Видалити</a>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card" style="width: 80%;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    @if (Model.Offer.Photo != null && Model.Offer.Photo.Length > 0)
+                    {
+                        string base64String = Convert.ToBase64String(Model.Offer.Photo);
+                        <img src="data:image;base64,@base64String" alt="Photo" style="width:200px; height:auto;" class="img-fluid rounded-start" />
+                    }
+                    else
+                    {
+                        <div class="card-img-top" style="background-color: #f0f0f0; height: 200px;"></div>
+                    }
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(model => model.Offer.Name)</h5>
+                        <p class="card-text">Ціна: @Html.DisplayFor(model => model.Price) грн</p>
+                        <p class="card-text">Кількість товару: @Html.DisplayFor(model => model.Offer.ItemAmount)</p>
+                        <p class="card-text">Продавець: @Html.DisplayFor(model => model.Offer.Seller.Username)</p>
+                        <p class="card-text">Покупець: @Html.DisplayFor(model => model.Order.Customer.Username)</p>
+                        <p class="card-text">Статус: @Html.DisplayFor(model => model.Order.Status.Name)</p>
+                        <p class="card-text">Метод оплати: @Html.DisplayFor(model => model.Order.PaymentMethod.Name)</p>
+                        <p class="card-text">Компанія доставки: @ViewBag.ShippingCompany.Name</p>
+                        <p class="card-text">Країна прибуття: @ViewBag.Shipping.ArrivalCountry</p>
+                        <p class="card-text">Місто прибуття: @ViewBag.Shipping.ArrivalCity</p>
+                        <p class="card-text">Вулиця прибуття: @ViewBag.Shipping.ArrivalStreet</p>
+                        <p class="card-text">Будинок прибуття: @ViewBag.Shipping.ArrivalBuildingNumber</p>
+                        <p class="card-text">Поштовий індекс прибуття: @ViewBag.Shipping.ArrivalZipCode</p>
+                        <p class="card-text">Країна відправлення: @ViewBag.Shipping.DepartmentCountry</p>
+                        <p class="card-text">Місто відправлення: @ViewBag.Shipping.DepartmentCity</p>
+                        <p class="card-text">Вулиця відправлення: @ViewBag.Shipping.DepartmentStreet</p>
+                        <p class="card-text">Будинок відправлення: @ViewBag.Shipping.DepartmentBuildingNumber</p>
+                        <p class="card-text">Поштовий індекс відправлення: @ViewBag.Shipping.DepartmentZipCode</p>
+                        <p class="card-text"><small class="text-body-secondary">Створено @Html.DisplayFor(model => model.Order.DateOfOrder) </small></p>
+                        @if (Model.Offer.SellerId == ViewBag.UserId)
+                        {
+                            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Редагувати</a>
+                            <a asp-action="Clients" class="btn btn-primary">Назад</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Index" asp-route-id="@Model?.Id" class="btn btn-primary">Назад</a>
+                        }
+                        <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Видалити</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
