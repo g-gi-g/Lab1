@@ -8,11 +8,13 @@ public partial class DbmarketplaceContext : DbContext
 {
     public DbmarketplaceContext()
     {
+        Database.EnsureCreated();
     }
 
     public DbmarketplaceContext(DbContextOptions<DbmarketplaceContext> options)
         : base(options)
     {
+        Database.EnsureCreated();
     }
 
     public virtual DbSet<Chat> Chats { get; set; }
@@ -53,7 +55,7 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Offer).WithMany(p => p.Chats)
                 .HasForeignKey(d => d.OfferId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Chats_Offers");
         });
 
@@ -64,12 +66,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Offer).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.OfferId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Feedbacks_Offers");
 
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Feedbacks_Users");
         });
 
@@ -80,12 +82,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Chat).WithMany(p => p.Messages)
                 .HasForeignKey(d => d.ChatId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Messages_Chats");
 
             entity.HasOne(d => d.Sender).WithMany(p => p.Messages)
                 .HasForeignKey(d => d.SenderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Messages_Users");
         });
 
@@ -97,12 +99,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Class).WithMany(p => p.Notifications)
                 .HasForeignKey(d => d.ClassId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Notifications_NotificationClasses");
 
             entity.HasOne(d => d.User).WithMany(p => p.Notifications)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Notifications_Users");
         });
 
@@ -122,12 +124,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Category).WithMany(p => p.Offers)
                 .HasForeignKey(d => d.CategoryId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Offers_Categories");
 
             entity.HasOne(d => d.Seller).WithMany(p => p.Offers)
                 .HasForeignKey(d => d.SellerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Offers_Users");
         });
 
@@ -146,17 +148,17 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.CustomerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Orders_Users");
 
             entity.HasOne(d => d.PaymentMethod).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.PaymentMethodId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Orders_PaymentMethods");
 
             entity.HasOne(d => d.Status).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.StatusId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Orders_Statuses");
         });
 
@@ -166,12 +168,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Offer).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OfferId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_OrderItem_Offers");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_OrderItem_Orders");
         });
 
@@ -195,12 +197,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Offer).WithMany(p => p.SavedOffers)
                 .HasForeignKey(d => d.OfferId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_SavedOffers_Offers");
 
             entity.HasOne(d => d.User).WithMany(p => p.SavedOffers)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_SavedOffers_Users");
         });
 
@@ -220,12 +222,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany(p => p.Shippings)
                 .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Shippings_Orders");
 
             entity.HasOne(d => d.ShippingCompany).WithMany(p => p.Shippings)
                 .HasForeignKey(d => d.ShippingCompanyId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Shippings_ShippingCompanies");
         });
 

@@ -50,7 +50,7 @@ else
                                 <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Offer.Price) грн</p>
                                 <p class="card-text">Кількість в наявності: @Html.DisplayFor(modelItem => item.Offer.ItemAmount)</p>
                                 <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
-                                <p class="card-text">Продавець: @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</p>
+                                <p class="card-text">Продавець: <a href="@Url.Action("Details", "Offers", new { id = item.Offer.SellerId })"> @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
@@ -85,7 +85,7 @@ else
                                 <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Offer.Price) грн</p>
                                 <p class="card-text">Кількість в наявності: Недоступний</p>
                                 <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
-                                <p class="card-text">Продавець: @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</p>
+                                <p class="card-text">Продавець: <a href="@Url.Action("Details", "Offers", new { id = item.Offer.SellerId })"> @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item bg-secondary">

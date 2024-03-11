@@ -34,6 +34,7 @@
                         @if (userInfo is not null && Model.SellerId != userInfo.Id)
                         {
                             <a asp-controller="Orders" asp-action="Create" asp-route-id="@userInfo.Id" class="btn btn-primary" style="margin: 5px;">Замовити</a>
+                            <a asp-controller="Users" asp-action="Details" asp-route-id="@Model.SellerId" class="btn btn-primary" style="margin: 5px;">Дані про продавця</a>
                         }
                         @if (userInfo is not null && Model.SellerId == userInfo.Id)
                         {

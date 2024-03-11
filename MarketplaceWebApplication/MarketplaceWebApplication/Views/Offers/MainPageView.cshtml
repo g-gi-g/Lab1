@@ -62,7 +62,8 @@ else
                             }
                         }
                         <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Category.Name)</p>
-                        <p class="card-text">Продавець: @Html.DisplayFor(modelItem => item.Seller.Username)</p>
+                            <p class="card-text">Продавець: <a href="@Url.Action("Details", "Users", 
+                                new { id = item.SellerId })"> @Html.DisplayFor(modelItem => item.Seller.Username) </a></p>
                     </div>
                     <ul class="list-group list-group-flush">
                         @if (userInfo is not null && item.SellerId != userInfo.Id)
