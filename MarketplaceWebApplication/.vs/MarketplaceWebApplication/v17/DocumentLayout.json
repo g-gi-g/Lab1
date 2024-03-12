@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\savedoffers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\savedoffers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\controllers\\chartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\controllers\\chartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\orderitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\orderitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\offers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\offers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\orderitems\\clients.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\orderitems\\clients.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\offers\\mainpageview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\offers\\mainpageview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\models\\countoffersbycategoriesresponseitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\models\\countoffersbycategoriesresponseitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\views\\feedbacks\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\views\\feedbacks\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,67 +42,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\SavedOffers\\Index.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\SavedOffers\\Index.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\SavedOffers\\Index.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\SavedOffers\\Index.cshtml",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAAAFcAAADLAAAA",
+              "DocumentIndex": 2,
+              "Title": "MainPageView.cshtml",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
+              "RelativeToolTip": "MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAC4AAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-11T21:41:51.3Z",
+              "WhenOpened": "2024-03-12T01:07:17.143Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Index.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\OrderItems\\Index.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Index.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\OrderItems\\Index.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACoAAAAZAAAA",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\Users\\Index.cshtml",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "MarketplaceWebApplication\\Views\\Users\\Index.cshtml",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAuwBQAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-11T21:39:35.525Z",
+              "WhenOpened": "2024-03-12T00:58:37.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChartsController.cs",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\ChartsController.cs",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Controllers\\ChartsController.cs",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Controllers\\ChartsController.cs",
+              "RelativeToolTip": "MarketplaceWebApplication\\Controllers\\ChartsController.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowCcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T21:55:01.772Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Clients.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Clients.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\OrderItems\\Clients.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\OrderItems\\Clients.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\OrderItems\\Clients.cshtml",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAADIAAACIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-11T21:36:52.53Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\Details.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\Offers\\Details.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\Details.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\Offers\\Details.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAACsAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-11T21:28:00.877Z",
+              "Title": "CountOffersByCategoriesResponseItem.cs",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Models\\CountOffersByCategoriesResponseItem.cs",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Models\\CountOffersByCategoriesResponseItem.cs",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Models\\CountOffersByCategoriesResponseItem.cs",
+              "RelativeToolTip": "MarketplaceWebApplication\\Models\\CountOffersByCategoriesResponseItem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T22:26:58.371Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "MainPageView.cshtml",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
-              "RelativeToolTip": "MarketplaceWebApplication\\Views\\Offers\\MainPageView.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAADsAAAAdAAAA",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Feedbacks\\Details.cshtml",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Views\\Feedbacks\\Details.cshtml",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Views\\Feedbacks\\Details.cshtml",
+              "RelativeToolTip": "MarketplaceWebApplication\\Views\\Feedbacks\\Details.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-11T21:23:10.407Z",
+              "WhenOpened": "2024-03-11T22:05:59.183Z",
               "EditorCaption": ""
             }
           ]

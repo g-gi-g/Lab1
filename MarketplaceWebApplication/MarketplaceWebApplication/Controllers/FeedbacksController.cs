@@ -47,7 +47,7 @@ namespace MarketplaceWebApplication.Controllers
                 .Include(f => f.User)
                 .Where(f => f.Offer.Id == id);
 
-            //ViewData["OfferId"] = id;
+            ViewData["OfferId"] = id;
             return View(await dbmarketplaceContext.ToListAsync());
         }
 

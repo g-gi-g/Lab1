@@ -1,8 +1,18 @@
 [
   {
     "ContainingType": "MarketplaceWebApplication.Controllers.ChartsController",
-    "Method": "GetCountByRatingAsync",
-    "RelativePath": "api/Charts/countByRating",
+    "Method": "GetOffersCountByCategoriesAsync",
+    "RelativePath": "api/Charts/countOffersByCats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarketplaceWebApplication.Controllers.ChartsController",
+    "Method": "GetOffersCountByUsersAsync",
+    "RelativePath": "api/Charts/countOffersByUsers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
