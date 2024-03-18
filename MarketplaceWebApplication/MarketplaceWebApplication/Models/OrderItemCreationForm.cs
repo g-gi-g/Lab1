@@ -8,6 +8,8 @@ namespace MarketplaceWebApplication.Models
 
         public int OrderId { get; set; }
 
+        [Range(0, int.MaxValue, ErrorMessage = "Ціна має бути невід'ємна")]
+        [Required(ErrorMessage = "Додайте ціну")]
         public float Price { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Кількість має бути невід'ємна")]

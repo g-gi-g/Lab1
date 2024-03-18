@@ -30,7 +30,7 @@ namespace MarketplaceWebApplication.Models
 
         public bool IsHidden { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Кількість товару має більше 0 та ціле")]
+        [Range(1, int.MaxValue, ErrorMessage = "Кількість товару має бути більше 0 та ціле")]
         [Required(ErrorMessage = "Введіть кількість товару")]
         public int ItemAmount { get; set; }
     }

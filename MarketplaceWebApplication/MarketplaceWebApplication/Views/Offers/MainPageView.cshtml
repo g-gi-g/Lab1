@@ -12,14 +12,14 @@
     {
         ViewBag.SearchWord = "";
     }
-
     List<OffersRatings> ORList = ViewBag.ORList;
 }
 <hr />
 <label for="Text" class="control-label" style="margin-right: 10px;">Пошук</label>
 <form asp-action="MainPageView" asp-controller="Offers" method="get" style="display: flex; align-items: center;">
     <input name="searchWord" class="form-control" value="@ViewBag.SearchWord" style="margin-right: 10px;" />
-    <button type="submit" class="btn btn-primary">Шукати</button>
+    <select name="selectedCategory" class="form-control" asp-items="ViewBag.OfferCat"></select>
+    <button type="submit" class="btn btn-primary">Шукати за фільтром</button>
 </form>
 
 <hr />

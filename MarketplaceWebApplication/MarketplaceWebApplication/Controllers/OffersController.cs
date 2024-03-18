@@ -49,7 +49,6 @@ namespace MarketplaceWebApplication.Controllers
             }
 
             ViewData["ORList"] = ORList;
-
             return View(await dbmarketplaceContext.ToListAsync());
         }
 
@@ -118,17 +117,19 @@ namespace MarketplaceWebApplication.Controllers
             }
 
             ViewData["ORList"] = ORList;
+            ViewData["OfferCat"] = new SelectList(_context.OfferCategories, "Id", "Name");
             return View(dbmarketplaceContext);
         }
 
         [HttpGet]
-        public async Task<IActionResult> MainPageView(string searchWord)
+        public async Task<IActionResult> MainPageView(string searchWord, int selectedCategory)
         {
             ViewData["SearchWord"] = searchWord;
 
             if (string.IsNullOrEmpty(searchWord))
             {
-                var dbmarketplaceContext = await _context.Offers.Include(o => o.Category)
+                var dbmarketplaceContext = await _context.Offers
+                    .Include(o => o.Category)
                     .Include(o => o.Seller)
                     .ToListAsync();
 
@@ -141,6 +142,7 @@ namespace MarketplaceWebApplication.Controllers
                 }
 
                 ViewData["ORList"] = ORList;
+                ViewData["OfferCat"] = new SelectList(_context.OfferCategories, "Id", "Name");
                 return View(dbmarketplaceContext);
             }
             else
@@ -148,7 +150,7 @@ namespace MarketplaceWebApplication.Controllers
                 var dbmarketplaceContext = await _context.Offers
                     .Include(o => o.Category)
                     .Include(o => o.Seller)
-                    .Where(o => o.Name == searchWord)
+                    .Where(o => o.Name == searchWord && o.CategoryId == selectedCategory)
                     .ToListAsync();
 
                 List<OffersRatings> ORList = new List<OffersRatings>();
@@ -160,8 +162,10 @@ namespace MarketplaceWebApplication.Controllers
                 }
 
                 ViewData["ORList"] = ORList;
+                ViewData["OfferCat"] = new SelectList(_context.OfferCategories, "Id", "Name");
                 return View(dbmarketplaceContext);
             }
+
         }
 
         // GET: Offers/Details/5

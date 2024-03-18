@@ -39,7 +39,6 @@ public class ChartsController : ControllerBase
     {
         var responseItems = await _context
             .Offers
-            //.Where(o => !o.IsHidden && !o.IsDeleted)
             .GroupBy(o => o.SellerId)
             .Select(group => new
             CountOffersByCategoriesResponseItem(group.Key.ToString(), group.Count()))
