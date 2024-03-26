@@ -251,3 +251,12 @@ E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bi
 E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\ClosedXML.dll
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\ExcelNumberFormat.dll
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\Irony.dll
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\SixLabors.Fonts.dll
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\System.IO.Packaging.dll
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\bin\Debug\net8.0\XLParser.dll
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\obj\Debug\net8.0\MarketplaceWebApplication.Resources.Res.resources
+E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication\obj\Debug\net8.0\MarketplaceWebApplication.csproj.GenerateResource.cache

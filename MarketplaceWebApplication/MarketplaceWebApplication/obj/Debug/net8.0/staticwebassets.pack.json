@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\ІСтаТП\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\wwwroot\\images\\EmptyPhoto.png",
+      "PackagePath": "staticwebassets\\images\\EmptyPhoto.png"
+    },
+    {
       "Id": "E:\\ІСтаТП\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

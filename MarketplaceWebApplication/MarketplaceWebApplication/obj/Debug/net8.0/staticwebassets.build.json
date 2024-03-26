@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "idAwknHrejIg6QQILUI74mQ1/EuegQwwKkEwiE3VFLs=",
+  "Hash": "IlM+32jVM7n8ajv18XxUhrUb9HFPEp6H0iCPUcjIL/4=",
   "Source": "MarketplaceWebApplication",
   "BasePath": "_content/MarketplaceWebApplication",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "E:\\ІСтаТП\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\wwwroot\\images\\EmptyPhoto.png",
+      "SourceId": "MarketplaceWebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\ІСтаТП\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\wwwroot\\",
+      "BasePath": "_content/MarketplaceWebApplication",
+      "RelativePath": "images/EmptyPhoto.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\EmptyPhoto.png"
     },
     {
       "Identity": "E:\\ІСтаТП\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\wwwroot\\js\\site.js",

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MarketplaceWebApplication.Models
 {
-    public class OfferModel
+    public class OfferModel : Entity
     {
         public int Id { get; set; }
 

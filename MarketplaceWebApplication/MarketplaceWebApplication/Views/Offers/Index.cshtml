@@ -16,6 +16,7 @@
     <p>
         <a asp-action="Create" class="btn btn-primary">Додати свою пропозицію</a>
     </p>
+    <a class="btn btn-primary mb-3" type="submit" asp-area="" asp-controller="Offers" asp-action="Import">Завантажити з файлу</a>
 }
 else 
 {
@@ -30,6 +31,9 @@ else
     <p>
         <a asp-action="Create" class="btn btn-primary">Додати свою пропозицію</a>
     </p>
+    <a class="btn btn-primary mb-3" type="submit" asp-area="" asp-controller="Offers" asp-action="Import">Завантажити з файлу</a>
+    <a class="btn btn-primary mb-3" type="submit" asp-area="" asp-controller="Offers" asp-action="Export">Експортувати у файл</a>
+
     if (Model.Count() == 0)
     {
         <h1>Нічого не знайдено</h1>

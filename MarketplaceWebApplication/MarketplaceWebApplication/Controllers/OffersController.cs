@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using MarketplaceWebApplication.Data;
 using Microsoft.AspNetCore.Http;
 using MarketplaceWebApplication.Models;
-
+using MarketplaceWebApplication.WebMVC.Infrastructure.Services;
 using System.IO;
 using MarketplaceWebApplication.Extensions;
 using System.Collections;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MarketplaceWebApplication.Controllers
 {
@@ -19,9 +20,12 @@ namespace MarketplaceWebApplication.Controllers
     {
         private readonly DbmarketplaceContext _context;
 
-        public OffersController(DbmarketplaceContext context)
+		private readonly IWebHostEnvironment _webHostEnvironment;
+
+		public OffersController(DbmarketplaceContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Offers
@@ -375,6 +379,53 @@ namespace MarketplaceWebApplication.Controllers
                 .Sum(f => f.Rating);
             double meanRating = (double)ratingsSum / feedbacksCount;
             return new OffersRatings { OfferId = offerId, Rating = meanRating }; 
+        }
+
+		[HttpGet]
+		public IActionResult Import()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Import(IFormFile offersFile, CancellationToken cancellationToken)
+		{
+			var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+			if (userInfo is null)
+			{
+				return RedirectToAction("NotLoggedView", "Home", null);
+			}
+
+			int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+			OfferDataPortServiceFactory factory = new OfferDataPortServiceFactory(_context, userId, _webHostEnvironment);
+			var importService = factory.GetImportService(offersFile.ContentType);
+		    using var stream = offersFile.OpenReadStream();
+			await importService.ImportFromStreamAsync(stream, cancellationToken);
+			return RedirectToAction(nameof(Index));
+		}
+
+        [HttpGet]
+        public async Task<IActionResult> Export([FromQuery] string contentType = "application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet", CancellationToken cancellationToken = default)
+        {
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
+
+            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            OfferDataPortServiceFactory factory = new OfferDataPortServiceFactory(_context, userId, _webHostEnvironment);
+            var exportService = factory.GetExportService(contentType);
+            var memoryStream = new MemoryStream();
+            await exportService.WriteToAsync(memoryStream, cancellationToken);
+            await memoryStream.FlushAsync(cancellationToken);
+            memoryStream.Position = 0;
+            return new FileStreamResult(memoryStream, contentType)
+            {
+                FileDownloadName = $"offers_{DateTime.UtcNow.ToShortDateString()}.xlsx"
+            };
         }
     }
 }

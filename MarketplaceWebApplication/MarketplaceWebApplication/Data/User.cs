@@ -23,7 +23,7 @@ public partial class User
     public DateOnly DateOfBirth { get; set; }
 
     [Required(ErrorMessage = "Додайте електронну пошту")]
-    [RegularExpression(@"[\w._%+=-]+@[\w.-]+\.[a-zA-z]{2,4}", ErrorMessage = "Електронна пошта має бути у форматі X@Y.Z")]
+    [RegularExpression(@"[\w._%+=-]+@[\w.-]+\.[a-zA-z]{2,4}", ErrorMessage = "Електронна пошта має бути у форматі X@Y.ZZ")]
     public string Email { get; set; } = null!;
 
     [Required(ErrorMessage = "Додайте пароль")]

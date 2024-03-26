@@ -1,0 +1,18 @@
+﻿<div class="row">
+	<div class="col-12">
+		@using (Html.BeginForm("Import", "Offers",
+				FormMethod.Post, new { enctype = "multipart/form-data" }))
+		{
+			<div class="mb-3">
+				<label for="offersFile" class="formlabel">Оберіть файл для заватаження</label>
+				<input type="file" name="offersFile"
+					   id="offersFile" />
+			</div>
+			<div>
+				<input class="btn btn-primary mb-3"
+					   type="submit" value="Завантажити" />
+			</div>
+		}
+	</div>
+</div>
+
