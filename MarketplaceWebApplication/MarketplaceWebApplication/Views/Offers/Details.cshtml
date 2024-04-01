@@ -16,7 +16,7 @@
                     @if (Model.Photo != null && Model.Photo.Length > 0)
                     {
                         string base64String = Convert.ToBase64String(Model.Photo);
-                        <img src="data:image;base64,@base64String" alt="Photo" style="width:200px; height:auto;" class="img-fluid rounded-start" />
+                        <img src="data:image;base64,@base64String" alt="Photo" style="width:auto; height:auto;" class="img-fluid rounded-start" />
                     }
                     else{
                         <div class="card-img-top" style="background-color: #f0f0f0; height: 200px;"></div>
@@ -25,12 +25,18 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
-                        <p class="card-text">Ціна: @Html.DisplayFor(model => model.Price) грн</p>
-                        <p class="card-text">Опис: @Html.DisplayFor(model => model.Description)</p>
-                        <p class="card-text">Кількість товару: @Html.DisplayFor(model => model.ItemAmount)</p>
-                        <p class="card-text">Категорія: @Html.DisplayFor(model => model.Category.Name)</p>
-                        <p class="card-text">Продавець: @Html.DisplayFor(model => model.Seller.Username)</p>
-                        <p class="card-text"><small class="text-body-secondary">Створено @Html.DisplayFor(model => model.TimeAdded) </small></p>
+                        <p class="card-text">@Html.DisplayFor(model => model.Price) грн</p>
+                        <p class="card-text">Доступно @Html.DisplayFor(model => model.ItemAmount) шт.</p>
+                        <p class="card-text">
+                            <a href="@Url.Action("Details", "Users",
+                            new { id = Model.SellerId })"> @Html.DisplayFor(model => model.Seller.Username) </a>
+                        </p>
+                        <p class="card-text">Опис: </p>
+                        <p class="card-text">@Html.DisplayFor(model => model.Description) </p>
+                        <div style="display: inline-block; background-color: #e5e5e5; padding: 5px 10px; border-radius: 5px;">
+                            <p class="card-text">@Html.DisplayFor(model => model.Category.Name)</p>
+                        </div>
+                        <p class="card-text"><small class="text-body-secondary">Створено @Model.TimeAdded.Date.ToString("dd.MM.yyyy") </small></p>
                         @if (userInfo is not null && Model.SellerId != userInfo.Id)
                         {
                             <a asp-controller="Orders" asp-action="Create" asp-route-id="@userInfo.Id" class="btn btn-primary" style="margin: 5px;">Замовити</a>
