@@ -29,10 +29,10 @@ else
     </form>
     <hr />
     <p>
-        <a asp-action="Create" class="btn btn-primary">Додати свою пропозицію</a>
+        <a asp-action="Create" class="btn btn-primary mb-3">Додати свою пропозицію</a>
+        <a class="btn btn-primary mb-3" type="submit" asp-area="" asp-controller="Offers" asp-action="Import">Завантажити з файлу</a>
+        <a class="btn btn-primary mb-3" type="submit" asp-area="" asp-controller="Offers" asp-action="Export">Експортувати у файл</a>
     </p>
-    <a class="btn btn-primary mb-3" type="submit" asp-area="" asp-controller="Offers" asp-action="Import">Завантажити з файлу</a>
-    <a class="btn btn-primary mb-3" type="submit" asp-area="" asp-controller="Offers" asp-action="Export">Експортувати у файл</a>
 
     if (Model.Count() == 0)
     {
@@ -46,7 +46,7 @@ else
                 <div class="col">
                     @if (!item.IsDeleted && !item.IsHidden)
                     {
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 25rem;">
                             @if (item.Photo != null && item.Photo.Length > 0)
                             {
                                 string base64String = Convert.ToBase64String(item.Photo);
@@ -58,22 +58,35 @@ else
                             }
                             <div class="card-body">
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                                <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Price) грн</p>
-                                <p class="card-text">Кількість в наявності: @Html.DisplayFor(modelItem => item.ItemAmount)</p>
-                                <p class="card-text">Чи видалено: @Html.DisplayFor(modelItem => item.IsDeleted)</p>
-                                <p class="card-text">Чи приховано: @Html.DisplayFor(modelItem => item.IsHidden)</p>
                                 @{
                                     var rating = ORList.FirstOrDefault(or => or.OfferId == item.Id).Rating;
                                     if (rating != -1)
                                     {
-                                        <p class="card-text">Рейтинг: @(Math.Floor(rating)) / 5</p>
+                                        var roundedRating = Math.Floor(rating);
+                                        <p class="card-text">
+                                            @{
+                                                for (int i = 0; i < roundedRating; i++)
+                                                {
+                                                    <span class="star" style="font-size: 20px;">&#9733;</span>
+                                                }
+                                                for (int i = 0; i < 5 - roundedRating; i++)
+                                                {
+                                                    <span class="star" style="font-size: 20px;">&#9734;</span>
+                                                }
+                                            }
+                                            (@(roundedRating) / 5)
+                                        </p>
                                     }
                                     else
                                     {
                                         <p class="card-text">Немає відгуків</p>
                                     }
                                 }
-                                <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Category.Name)</p>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Price) грн</p>
+                                <p class="card-text" style="font-size: smaller;">Доступно @Html.DisplayFor(modelItem => item.ItemAmount) шт.</p>
+                                <div style="display: inline-block; background-color: #e5e5e5; padding: 5px 10px; border-radius: 5px;">
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Category.Name)</p>
+                                </div>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
@@ -87,13 +100,13 @@ else
                                 </li>
                             </ul>
                             <div class="card-body">
-                                <p class="card-text">Час створення: @Html.DisplayFor(modelItem => item.TimeAdded)</p>
+                                <p class="card-text">Створено @item.TimeAdded.Date.ToString("dd.MM.yyyy")</p>
                             </div>
                         </div>
                     }
                     else
                     {
-                        <div class="card bg-secondary" style="width: 18rem;">
+                        <div class="card bg-secondary" style="width: 25rem;">
                             @if (item.Photo != null && item.Photo.Length > 0)
                             {
                                 string base64String = Convert.ToBase64String(item.Photo);
@@ -105,22 +118,35 @@ else
                             }
                             <div class="card-body">
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                                <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Price) грн</p>
-                                <p class="card-text">Кількість в наявності: Недостуаний</p>
-                                <p class="card-text">Чи видалено: @Html.DisplayFor(modelItem => item.IsDeleted)</p>
-                                <p class="card-text">Чи приховано: @Html.DisplayFor(modelItem => item.IsHidden)</p>
                                 @{
                                     var rating = ORList.FirstOrDefault(or => or.OfferId == item.Id).Rating;
                                     if (rating != -1)
                                     {
-                                        <p class="card-text">Рейтинг: @(Math.Floor(rating)) / 5</p>
+                                        var roundedRating = Math.Floor(rating);
+                                        <p class="card-text">
+                                            @{
+                                                for (int i = 0; i < roundedRating; i++)
+                                                {
+                                                    <span class="star" style="font-size: 20px;">&#9733;</span>
+                                                }
+                                                for (int i = 0; i < 5 - roundedRating; i++)
+                                                {
+                                                    <span class="star" style="font-size: 20px;">&#9734;</span>
+                                                }
+                                            }
+                                            (@(roundedRating) / 5)
+                                        </p>
                                     }
                                     else
                                     {
                                         <p class="card-text">Немає відгуків</p>
                                     }
                                 }
-                                <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Category.Name)</p>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Price) грн</p>
+                                <p class="card-text" style="font-size: smaller;">Недоступний</p>
+                                <div style="display: inline-block; background-color: #c0c0c0; padding: 5px 10px; border-radius: 5px;">
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Category.Name)</p>
+                                </div>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item bg-secondary">
@@ -137,7 +163,7 @@ else
                                 }
                             </ul>
                             <div class="card-body">
-                                <p class="card-text">Час створення: @Html.DisplayFor(modelItem => item.TimeAdded)</p>
+                                <p class="card-text">Створено @item.TimeAdded.Date.ToString("dd.MM.yyyy")</p>
                             </div>
                         </div>
                     }

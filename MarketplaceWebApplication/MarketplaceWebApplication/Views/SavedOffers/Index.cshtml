@@ -35,7 +35,7 @@ else
                 <div class="col">
                     @if (!item.Offer.IsDeleted && !item.Offer.IsHidden) 
                     {
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 25rem;">
                             @if (item.Offer.Photo != null && item.Offer.Photo.Length > 0)
                             {
                                 string base64String = Convert.ToBase64String(item.Offer.Photo);
@@ -47,10 +47,12 @@ else
                             }
                             <div class="card-body">
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.Offer.Name)</h5>
-                                <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Offer.Price) грн</p>
-                                <p class="card-text">Кількість в наявності: @Html.DisplayFor(modelItem => item.Offer.ItemAmount)</p>
-                                <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
-                                <p class="card-text">Продавець: <a href="@Url.Action("Details", "Offers", new { id = item.Offer.SellerId })"> @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Offer.Price) грн</p>
+                                <p class="card-text" style="font-size: smaller;">Доступно @Html.DisplayFor(modelItem => item.Offer.ItemAmount) шт.</p>
+                                <p class="card-text"><a href="@Url.Action("Details", "Offers", new { id = item.Offer.SellerId })"> @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
+                                <div style="display: inline-block; background-color: #e5e5e5; padding: 5px 10px; border-radius: 5px;">
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
+                                </div>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
@@ -64,13 +66,13 @@ else
                                 </li>
                             </ul>
                             <div class="card-body">
-                                <p class="card-text">Час створення: @Html.DisplayFor(modelItem => item.TimeAdded)</p>
+                                <p class="card-text">Створено @item.TimeAdded.Date.ToString("dd.MM.yyyy")</p>
                             </div>
                         </div>
                     }
                     else
                     {
-                        <div class="card bg-secondary" style="width: 18rem;">
+                        <div class="card bg-secondary" style="width: 25rem;">
                             @if (item.Offer.Photo != null && item.Offer.Photo.Length > 0)
                             {
                                 string base64String = Convert.ToBase64String(item.Offer.Photo);
@@ -84,8 +86,10 @@ else
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.Offer.Name)</h5>
                                 <p class="card-text">Ціна: @Html.DisplayFor(modelItem => item.Offer.Price) грн</p>
                                 <p class="card-text">Кількість в наявності: Недоступний</p>
-                                <p class="card-text">Категорія: @Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
-                                <p class="card-text">Продавець: <a href="@Url.Action("Details", "Offers", new { id = item.Offer.SellerId })"> @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
+                                <p class="card-text"><a href="@Url.Action("Details", "Offers", new { id = item.Offer.SellerId })"> @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
+                                <div style="display: inline-block; background-color: #e5e5e5; padding: 5px 10px; border-radius: 5px;">
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
+                                </div>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item bg-secondary">
@@ -96,7 +100,7 @@ else
                                 </li>
                             </ul>
                             <div class="card-body">
-                                <p class="card-text">Час створення: @Html.DisplayFor(modelItem => item.TimeAdded)</p>
+                                <p class="card-text">Створено @item.TimeAdded.Date.ToString("dd.MM.yyyy")</p>
                             </div>
                         </div>
                     }

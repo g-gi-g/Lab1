@@ -17,7 +17,23 @@
     <div class="card">
         <h5 class="card-header">@item.User.Username</h5>
         <div class="card-body">
-            <h5 class="card-title">@item.Rating / 5</h5>
+            <h5>
+                @{
+                    <p class="card-text">
+                        @{
+                            for (int i = 0; i < @item.Rating; i++)
+                            {
+                                <span class="star" style="font-size: 20px;">&#9733;</span>
+                            }
+                            for (int i = 0; i < 5 - @item.Rating; i++)
+                            {
+                                <span class="star" style="font-size: 20px;">&#9734;</span>
+                            }
+                        }
+                        (@(@item.Rating) / 5)
+                    </p>
+                }
+            </h5>
             <p class="card-text">@item.Text</p>
             <p class="card-text">@item.TimeAdded</p>
             @if (userInfo is not null && userInfo.Id == item.UserId)
