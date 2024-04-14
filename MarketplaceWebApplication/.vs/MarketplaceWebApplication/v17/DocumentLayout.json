@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\data\\applicationidentitycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\data\\applicationidentitycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\data\\identity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\data\\identity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|e:\\\u0456\u0441\u0442\u0430\u0442\u043F\\lab1\\lab1\\marketplacewebapplication\\marketplacewebapplication\\extensions\\roleinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62BB7DEC-0202-42F8-AC08-2A490439F0B1}|MarketplaceWebApplication\\MarketplaceWebApplication.csproj|solutionrelative:marketplacewebapplication\\extensions\\roleinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +34,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationIdentityContext.cs",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Data\\ApplicationIdentityContext.cs",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Data\\ApplicationIdentityContext.cs",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Data\\ApplicationIdentityContext.cs",
-              "RelativeToolTip": "MarketplaceWebApplication\\Data\\ApplicationIdentityContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAxAAAA",
+              "DocumentIndex": 2,
+              "Title": "RoleInitializer.cs",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Extensions\\RoleInitializer.cs",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Extensions\\RoleInitializer.cs",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Extensions\\RoleInitializer.cs",
+              "RelativeToolTip": "MarketplaceWebApplication\\Extensions\\RoleInitializer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAB5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T14:40:28.072Z",
+              "WhenOpened": "2024-04-14T23:20:30.922Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Data\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Data\\ApplicationUser.cs",
-              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Data\\ApplicationUser.cs",
-              "RelativeToolTip": "MarketplaceWebApplication\\Data\\ApplicationUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAyAAAA",
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Data\\Identity\\User.cs",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Data\\Identity\\User.cs",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Data\\Identity\\User.cs",
+              "RelativeToolTip": "MarketplaceWebApplication\\Data\\Identity\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T14:38:25.432Z"
+              "WhenOpened": "2024-04-14T23:19:10.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Program.cs",
+              "RelativeDocumentMoniker": "MarketplaceWebApplication\\Program.cs",
+              "ToolTip": "E:\\\u0406\u0421\u0442\u0430\u0422\u041F\\Lab1\\Lab1\\MarketplaceWebApplication\\MarketplaceWebApplication\\Program.cs",
+              "RelativeToolTip": "MarketplaceWebApplication\\Program.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T17:23:04.008Z",
+              "EditorCaption": ""
             }
           ]
         }

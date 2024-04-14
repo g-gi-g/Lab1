@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Feedbacks/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -228,6 +236,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/PaymentMethods/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudE1ldGhvZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Roles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Roles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Roles/UserList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcVXNlckxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/SavedOffers/Create.cshtml]
