@@ -26,26 +26,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\ІСтаТП\Lab1\Lab1\MarketplaceWebApplication\MarketplaceWebApplication
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Chats/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdHNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Chats/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdHNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Chats/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdHNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Chats/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdHNcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Chats/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdHNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Feedbacks/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -76,26 +56,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Messages/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Messages/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Messages/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Messages/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Messages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/Notifications/Create.cshtml]
