@@ -30,7 +30,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             var dbmarketplaceContext = _context.Notifications.Include(n => n.Class)
                 .Include(n => n.User)

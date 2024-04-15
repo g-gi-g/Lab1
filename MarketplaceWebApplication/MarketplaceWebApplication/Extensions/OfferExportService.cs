@@ -13,7 +13,7 @@ public class OfferExportService : IExportService<OfferModel>
 {
 	private const string RootWorksheetName = "Offers";
 
-	private int userId;
+	private string userId;
 
 	private static readonly IReadOnlyList<string> HeaderNames = new string[]
 	{
@@ -72,7 +72,7 @@ public class OfferExportService : IExportService<OfferModel>
 		}
 	}
 
-	public OfferExportService(DbmarketplaceContext context, int userId)
+	public OfferExportService(DbmarketplaceContext context, string userId)
 	{
 		_context = context;
 		this.userId = userId;

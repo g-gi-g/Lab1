@@ -18,9 +18,9 @@ public class OfferImportService : IImportService<OfferModel>
 
     private readonly IWebHostEnvironment _webHostEnvironment;
 
-    private int userId;
+    private string userId;
 
-    public OfferImportService(DbmarketplaceContext context, int userId, IWebHostEnvironment webHostEnvironment)
+    public OfferImportService(DbmarketplaceContext context, string userId, IWebHostEnvironment webHostEnvironment)
     {
         _context = context;
         this.userId = userId;

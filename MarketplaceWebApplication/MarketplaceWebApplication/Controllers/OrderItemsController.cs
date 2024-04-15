@@ -30,7 +30,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             var dbmarketplaceContext = _context.OrderItems.Include(o => o.Offer).ThenInclude(s => s.Seller)
                 .Include(o => o.Order)
@@ -48,7 +48,8 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
+
             ViewData["SearchWord"] = searchWord;
 
             if (string.IsNullOrEmpty(searchWord))
@@ -78,7 +79,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             var dbmarketplaceContext = _context.OrderItems.Include(o => o.Offer).ThenInclude(s => s.Seller)
                 .Include(o => o.Order)
@@ -96,7 +97,8 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
+
             ViewData["SearchWord"] = searchWord;
 
             if (string.IsNullOrEmpty(searchWord))
@@ -127,7 +129,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             if (id == null)
             {
@@ -162,7 +164,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             var offer = _context.Offers.FirstOrDefault(o => o.Id == Id);
             ViewData["UserId"] = userId;
@@ -236,7 +238,7 @@ namespace MarketplaceWebApplication.Controllers
                     Title = "Створено нове замовлення!",
                     Text = "Користувач " + cust.Username + " замовив товар " + of.Name + "!",
                     TimeAdded = DateTime.Now,
-                    ClassId = 6,
+                    ClassId = 5,
                     IsWatched = false,
                     UserId = of.SellerId,
                 };
@@ -366,7 +368,7 @@ namespace MarketplaceWebApplication.Controllers
                         Title = "Зміна статусу",
                         Text = "Статус вашого замовлення з номером " + order.Id + " змінився на "+ status.Name + "!",
                         TimeAdded = DateTime.Now,
-                        ClassId = 2,
+                        ClassId = 1,
                         IsWatched = false,
                         UserId = order.CustomerId,
                     };

@@ -30,7 +30,8 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
+
             ViewData["UserId"] = userId;
 
             var dbmarketplaceContext = _context.Orders.Include(o => o.Customer)
@@ -79,7 +80,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            ViewData["UserId"] = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             return View();
         }

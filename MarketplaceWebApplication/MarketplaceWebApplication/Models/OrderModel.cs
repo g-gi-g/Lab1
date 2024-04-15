@@ -6,7 +6,7 @@ namespace MarketplaceWebApplication.Models
     {
         public int Id { get; set; }
 
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
 
         public int? TransactionId { get; set; }
 

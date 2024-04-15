@@ -7,7 +7,7 @@ namespace MarketplaceWebApplication.Models
     {
         public int Id { get; set; }
 
-        public int SellerId { get; set; }
+        public string SellerId { get; set; }
 
         [Required(ErrorMessage = "Додайте назву")]
         public string Name { get; set; } = null!;

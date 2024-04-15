@@ -1,0 +1,27 @@
+﻿@model MarketplaceWebApplication.Data.Identity.User
+
+@{
+    ViewData["Title"] = "Особистий кабінет";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card" style="width: 80%;">
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(model => model.UserName)</h5>
+                        <p class="card-text">Ім'я: @Html.DisplayFor(model => model.FirstName)</p>
+                        <p class="card-text">Прізвище: @Html.DisplayFor(model => model.LastName)</p>
+                        <p class="card-text">Дата народження: @Html.DisplayFor(model => model.DateOfBirth)</p>
+                        <p class="card-text">Електронна пошта: @Html.DisplayFor(model => model.Email)</p>
+                        <p class="card-text">Номер телефону: @Html.DisplayFor(model => model.PhoneNumber)</p>
+                        <p class="card-text"><small class="text-body-secondary">Зареєстрований @Html.DisplayFor(model => model.DateOfRegistration) </small></p>
+                        <a asp-action="EditUserInfo" asp-route-id="@Model?.Id" class="btn btn-primary">Редагувати дані</a> |
+                        <a asp-controller="Offers" asp-action="MainPageView" class="btn btn-primary">Назад</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

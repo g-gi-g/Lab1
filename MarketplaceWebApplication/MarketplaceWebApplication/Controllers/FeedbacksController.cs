@@ -20,15 +20,6 @@ namespace MarketplaceWebApplication.Controllers
             _context = context;
         }
 
-        //public async Task<IActionResult> Index()
-        //{
-            //var dbmarketplaceContext = _context.Feedbacks.Include(f => f.Offer)
-                //.Include(f => f.User);
-            //ViewData["UserId"] = 0;
-
-            //return View(await dbmarketplaceContext.ToListAsync());
-        //}
-
         // GET: Feedbacks
         public async Task<IActionResult> Index(int id)
         {
@@ -36,7 +27,7 @@ namespace MarketplaceWebApplication.Controllers
 
             if (userInfo is not null)
             {
-                ViewData["UserId"] = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+                ViewData["UserId"] = userInfo.Id;
             }
             else
             {
@@ -81,7 +72,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             var offer = _context.Offers.FirstOrDefault(o => o.Id == Id);
             ViewData["OfferId"] = new SelectList(new List<Offer> { offer }, "Id", "Id");
@@ -121,7 +112,7 @@ namespace MarketplaceWebApplication.Controllers
                     Title = "Ви залишили відгук",
                     Text = "Ви залишили відгук на пропозицію " + of.Name + "!",
                     TimeAdded = DateTime.Now,
-                    ClassId = 5,
+                    ClassId = 4,
                     IsWatched = false,
                     UserId = fb.UserId,
                 };

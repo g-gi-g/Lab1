@@ -17,11 +17,7 @@ public partial class DbmarketplaceContext : DbContext
         Database.EnsureCreated();
     }
 
-    public virtual DbSet<Chat> Chats { get; set; }
-
     public virtual DbSet<Feedback> Feedbacks { get; set; }
-
-    public virtual DbSet<Message> Messages { get; set; }
 
     public virtual DbSet<Notification> Notifications { get; set; }
 
@@ -49,15 +45,6 @@ public partial class DbmarketplaceContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Chat>(entity =>
-        {
-            entity.Property(e => e.TimeCreated).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Offer).WithMany(p => p.Chats)
-                .HasForeignKey(d => d.OfferId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_Chats_Offers");
-        });
 
         modelBuilder.Entity<Feedback>(entity =>
         {
@@ -66,29 +53,13 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Offer).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.OfferId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_Feedbacks_Offers");
 
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_Feedbacks_Users");
-        });
-
-        modelBuilder.Entity<Message>(entity =>
-        {
-            entity.Property(e => e.Text).HasMaxLength(200);
-            entity.Property(e => e.TimeAdded).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Chat).WithMany(p => p.Messages)
-                .HasForeignKey(d => d.ChatId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_Messages_Chats");
-
-            entity.HasOne(d => d.Sender).WithMany(p => p.Messages)
-                .HasForeignKey(d => d.SenderId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_Messages_Users");
         });
 
         modelBuilder.Entity<Notification>(entity =>
@@ -168,12 +139,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Offer).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OfferId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_OrderItem_Offers");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_OrderItem_Orders");
         });
 
@@ -197,12 +168,12 @@ public partial class DbmarketplaceContext : DbContext
 
             entity.HasOne(d => d.Offer).WithMany(p => p.SavedOffers)
                 .HasForeignKey(d => d.OfferId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_SavedOffers_Offers");
 
             entity.HasOne(d => d.User).WithMany(p => p.SavedOffers)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_SavedOffers_Users");
         });
 
@@ -243,7 +214,6 @@ public partial class DbmarketplaceContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(50);
             entity.Property(e => e.LastName).HasMaxLength(50);
-            entity.Property(e => e.Password).HasMaxLength(100);
             entity.Property(e => e.PhoneNumber).HasMaxLength(20);
             entity.Property(e => e.Username).HasMaxLength(50);
         });

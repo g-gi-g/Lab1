@@ -9,9 +9,9 @@ public class OfferDataPortServiceFactory : IDataPortServiceFactory<OfferModel>
 
     private readonly IWebHostEnvironment _webHostEnvironment;
 
-    private int userId;
+    private string userId;
 
-    public OfferDataPortServiceFactory(DbmarketplaceContext _context, int userId, IWebHostEnvironment webHostEnvironment)
+    public OfferDataPortServiceFactory(DbmarketplaceContext _context, string userId, IWebHostEnvironment webHostEnvironment)
     {
         this._context = _context;
         this.userId = userId;

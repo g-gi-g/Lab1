@@ -53,16 +53,29 @@
                             var userInfo = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
                             if (userInfo is null)
                             {
-                                <a class="nav-link text-dark" asp-area="">Ви не увійшли в обліковий запис</a>
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="">Ви не увійшли в обліковий запис</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Увійти</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Зареєструватися</a>
+                                </li>
                             }
                             else
                             {
-                                <a class="nav-link text-dark" asp-area="">Доброго дня, @userInfo.Username</a>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="">Доброго дня, @userInfo.Username</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="AccountPage">Кабінет</a>
+                                </li>
                             }
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Кабінет</a>
-                        </li>
                     </ul>
                 </div>
             </div>

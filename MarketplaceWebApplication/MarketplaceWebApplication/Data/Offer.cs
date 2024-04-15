@@ -7,7 +7,7 @@ public partial class Offer
 {
     public int Id { get; set; }
 
-    public int SellerId { get; set; }
+    public string SellerId { get; set; }
 
     public string Name { get; set; } = null!;
 
@@ -30,8 +30,6 @@ public partial class Offer
     public int ItemAmount { get; set; }
 
     public virtual OfferCategory Category { get; set; } = null!;
-
-    public virtual ICollection<Chat> Chats { get; set; } = new List<Chat>();
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 

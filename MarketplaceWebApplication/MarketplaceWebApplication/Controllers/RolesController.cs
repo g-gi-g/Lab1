@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MarketplaceWebApplication.Data.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MarketplaceWebApplication.Controllers;
 
+[Authorize(Roles = "admin")]
 public class RolesController : Controller
 {
     RoleManager<IdentityRole> _roleManager;

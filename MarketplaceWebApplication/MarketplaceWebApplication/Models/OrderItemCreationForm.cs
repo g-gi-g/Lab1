@@ -16,7 +16,7 @@ namespace MarketplaceWebApplication.Models
         [Required(ErrorMessage = "Додайте кількість")]
         public float Quantity { get; set; }
 
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
 
         public int? TransactionId { get; set; }
 

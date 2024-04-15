@@ -35,7 +35,7 @@ namespace MarketplaceWebApplication.Controllers
             }
 
             saved.OfferId = (int)id;
-            saved.UserId = (int)userInfo.Id;
+            saved.UserId = userInfo.Id;
             saved.TimeAdded = DateTime.Now;
 
             if (ModelState.IsValid)
@@ -50,7 +50,7 @@ namespace MarketplaceWebApplication.Controllers
                     Title = "Ви зберігли пропозицію",
                     Text = "Ви зберігли пропозицію " + of.Name + "!",
                     TimeAdded = DateTime.Now,
-                    ClassId = 4,
+                    ClassId = 3,
                     IsWatched = false,
                     UserId = saved.UserId,
                 };
@@ -73,7 +73,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             var dbmarketplaceContext = _context.SavedOffers
                 .Include(s => s.Offer).ThenInclude(s => s.Seller)
@@ -103,7 +103,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             ViewData["SearchWord"] = searchWord;
 
@@ -178,7 +178,8 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
+
             ViewData["UserId"] = userId;
 
             ViewData["OfferId"] = new SelectList(_context.Offers, "Id", "Id");

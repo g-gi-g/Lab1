@@ -38,7 +38,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
 
             var dbmarketplaceContext = _context.Offers.Include(o => o.Category)
                 .Include(o => o.Seller)
@@ -66,7 +66,8 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
+
             ViewData["SearchWord"] = searchWord;
 
             if (string.IsNullOrEmpty(searchWord))
@@ -390,15 +391,15 @@ namespace MarketplaceWebApplication.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Import(IFormFile offersFile, CancellationToken cancellationToken)
 		{
-			var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
+            var userInfo = HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails");
 
-			if (userInfo is null)
-			{
-				return RedirectToAction("NotLoggedView", "Home", null);
-			}
+            if (userInfo is null)
+            {
+                return RedirectToAction("NotLoggedView", "Home", null);
+            }
 
-			int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
-			OfferDataPortServiceFactory factory = new OfferDataPortServiceFactory(_context, userId, _webHostEnvironment);
+            string userId = userInfo.Id;
+            OfferDataPortServiceFactory factory = new OfferDataPortServiceFactory(_context, userId, _webHostEnvironment);
 			var importService = factory.GetImportService(offersFile.ContentType);
 		    using var stream = offersFile.OpenReadStream();
 			await importService.ImportFromStreamAsync(stream, cancellationToken);
@@ -415,7 +416,7 @@ namespace MarketplaceWebApplication.Controllers
                 return RedirectToAction("NotLoggedView", "Home", null);
             }
 
-            int userId = (int)HttpContext.Session.GetObjectFromJson<UserDetails>("UserDetails").Id;
+            string userId = userInfo.Id;
             OfferDataPortServiceFactory factory = new OfferDataPortServiceFactory(_context, userId, _webHostEnvironment);
             var exportService = factory.GetExportService(contentType);
             var memoryStream = new MemoryStream();
