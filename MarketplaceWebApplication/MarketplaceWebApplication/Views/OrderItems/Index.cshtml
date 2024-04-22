@@ -48,7 +48,7 @@ else
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Price) грн</p>
                             <p class="card-text" style="font-size: smaller;">Доступно @Html.DisplayFor(modelItem => item.Offer.ItemAmount) шт.</p>
                             <p class="card-text">Номер замовлення: @Html.DisplayFor(modelItem => item.OrderId)</p>
-                            <p class="card-text"><a href="@Url.Action("Details", "Users", new { id = item.Offer.SellerId })">@Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
+                            <p class="card-text"><a href="@Url.Action("SellerPage", "Account", new { userId = item.Offer.SellerId })">@Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">

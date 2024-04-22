@@ -18,7 +18,7 @@
 <label for="Text" class="control-label" style="margin-right: 10px;">Пошук</label>
 <form asp-action="MainPageView" asp-controller="Offers" method="get" style="display: flex; align-items: center;">
     <input name="searchWord" class="form-control" value="@ViewBag.SearchWord" style="margin-right: 10px;" />
-    <select name="selectedCategory" class="form-control" asp-items="ViewBag.OfferCat"></select>
+    <select name="selectedCategory" class="form-control" style="width:200px; margin-right: 10px;" asp-items="ViewBag.OfferCat"></select>
     <button type="submit" class="btn btn-primary">Шукати за фільтром</button>
 </form>
 
@@ -30,54 +30,6 @@
 }
 else
 {
-    <h5>Статистика товарів по категоріям</h5>
-
-    <div class="row">
-        <div class="col-3">
-            <div id="countByCatsChart"></div>
-        </div>
-    </div>
-    @section Scripts
-    {
-    <script type="text/javascript"
-            src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(drawCharts);
-        function drawCharts() {
-            const categoryNames = {
-                1: 'Рослини',
-                2: 'Товари для кухні',
-                3: 'Товари для саду',
-                4: 'Товари для хобі',
-                5: 'Електроніка'
-            };
-
-            fetch(`/api/charts/countOffersByCats`)
-                .then(response => response.json())
-                .then(data => {
-                    const dataTable = new google.visualization.DataTable();
-                    dataTable.addColumn('string', 'Категорія');
-                    dataTable.addColumn('number', 'Кількість');
-
-                    data.forEach(item => {
-                        const categoryName = categoryNames[item.cat];
-                        dataTable.addRow([categoryName, item.count]);
-                    });
-
-                    const options = {
-                        title: 'Кількість товарів за категоріями',
-                        width: 1400,
-                        height: 400,
-                        legend: { position: 'none' },
-                    };
-
-                    const chart = new google.visualization.ColumnChart(document.getElementById('countByCatsChart'));
-                    chart.draw(dataTable, options);
-                });
-        }
-    </script>
-    }
     <div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (var item in Model)
     {
@@ -122,8 +74,9 @@ else
                         }
                         <p class="card-text">@Html.DisplayFor(modelItem => item.Price) грн</p>
                         <p class="card-text" style="font-size: smaller;">Доступно @Html.DisplayFor(modelItem => item.ItemAmount) шт.</p>
-                        <p class="card-text"><a href="@Url.Action("Details", "Users", 
-                            new { id = item.SellerId })"> @Html.DisplayFor(modelItem => item.Seller.Username) </a></p>
+                        <p class="card-text"><a href="@Url.Action("SellerPage", "Account", 
+                            new { userId = item.SellerId })"> @Html.DisplayFor(modelItem => item.Seller.Username) </a>
+                            </p>
                         <div style="display: inline-block; background-color: #e5e5e5; padding: 5px 10px; border-radius: 5px;">
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Category.Name)</p>
                         </div>
@@ -156,6 +109,53 @@ else
         }
     }
     </div>
+    <div class="row">
+        <h5 class="text-center" style="padding-top: 100px;">Статистика товарів по категоріям</h5>
+        <div class="col-3">
+            <div id="countByCatsChart"></div>
+        </div>
+    </div>
+    @section Scripts
+        {
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawCharts);
+        function drawCharts() {
+            const categoryNames = {
+                1: 'Рослини',
+                2: 'Товари для кухні',
+                3: 'Товари для саду',
+                4: 'Товари для хобі',
+                5: 'Електроніка'
+            };
+
+            fetch(`/api/charts/countOffersByCats`)
+                .then(response => response.json())
+                .then(data => {
+                    const dataTable = new google.visualization.DataTable();
+                    dataTable.addColumn('string', 'Категорія');
+                    dataTable.addColumn('number', 'Кількість');
+
+                    data.forEach(item => {
+                        const categoryName = categoryNames[item.cat];
+                        dataTable.addRow([categoryName, item.count]);
+                    });
+
+                    const options = {
+                        title: 'Кількість товарів за категоріями',
+                        width: 1400,
+                        height: 400,
+                        legend: { position: 'none' },
+                    };
+
+                    const chart = new google.visualization.ColumnChart(document.getElementById('countByCatsChart'));
+                    chart.draw(dataTable, options);
+                });
+        }
+    </script>
+    }
 }
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

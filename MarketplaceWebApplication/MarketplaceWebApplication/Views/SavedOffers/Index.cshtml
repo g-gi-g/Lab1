@@ -49,7 +49,7 @@ else
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.Offer.Name)</h5>
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Offer.Price) грн</p>
                                 <p class="card-text" style="font-size: smaller;">Доступно @Html.DisplayFor(modelItem => item.Offer.ItemAmount) шт.</p>
-                                <p class="card-text"><a href="@Url.Action("Details", "Offers", new { id = item.Offer.SellerId })"> @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
+                                <p class="card-text"><a href="@Url.Action("SellerPage", "Account", new { userId = item.Offer.SellerId })"> @Html.DisplayFor(modelItem => item.Offer.Seller.Username)</a></p>
                                 <div style="display: inline-block; background-color: #e5e5e5; padding: 5px 10px; border-radius: 5px;">
                                     <p class="card-text">@Html.DisplayFor(modelItem => item.Offer.Category.Name)</p>
                                 </div>

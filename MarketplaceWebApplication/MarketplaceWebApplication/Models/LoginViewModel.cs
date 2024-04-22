@@ -5,8 +5,8 @@ namespace MarketplaceWebApplication.Models;
 public class LoginViewModel
 {
     [Required]
-    [Display(Name = "Електронна адреса")]
-    public string Email { get; set; }
+    [Display(Name = "Ім'я користувача")]
+    public string UserName { get; set; }
 
     [Required]
     [DataType(DataType.Password)]

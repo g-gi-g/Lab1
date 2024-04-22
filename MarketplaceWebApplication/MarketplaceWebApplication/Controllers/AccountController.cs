@@ -98,7 +98,7 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var result =
-                await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
             if (result.Succeeded)
             {
                 var currentUser = await _userManager.GetUserAsync(HttpContext.User);
@@ -146,6 +146,13 @@ public class AccountController : Controller
 
         string userId = userInfo.Id;
 
+        Data.Identity.User user = _userManager.Users.FirstOrDefault(user => user.Id == userId);
+
+        return View(user);
+    }
+
+    public async Task<IActionResult> SellerPage(string userId)
+    {
         Data.Identity.User user = _userManager.Users.FirstOrDefault(user => user.Id == userId);
 
         return View(user);
@@ -221,5 +228,10 @@ public class AccountController : Controller
             return RedirectToAction("AccountPage", "Account");
         }
         return View(user);
+    }
+
+    public IActionResult AccessDenied()
+    { 
+        return View();
     }
 }

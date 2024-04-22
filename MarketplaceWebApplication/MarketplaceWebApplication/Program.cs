@@ -1,6 +1,9 @@
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using MarketplaceWebApplication.Data;
 using MarketplaceWebApplication.Data.Identity;
 using MarketplaceWebApplication.Extensions;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,6 +31,8 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 

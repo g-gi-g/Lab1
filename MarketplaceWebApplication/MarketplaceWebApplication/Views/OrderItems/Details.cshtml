@@ -5,40 +5,29 @@
 }
 
 <div class="container-fluid">
-    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+    <div class="row justify-content-center align-items-center" style="height: auto;">
         <div class="card" style="width: 80%;">
             <div class="row g-0">
-                <div class="col-md-4">
-                    @if (Model.Offer.Photo != null && Model.Offer.Photo.Length > 0)
-                    {
-                        string base64String = Convert.ToBase64String(Model.Offer.Photo);
-                        <img src="data:image;base64,@base64String" alt="Photo" style="width:200px; height:auto;" class="img-fluid rounded-start" />
-                    }
-                    else
-                    {
-                        <div class="card-img-top" style="background-color: #f0f0f0; height: 200px;"></div>
-                    }
-                </div>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(model => model.Offer.Name)</h5>
-                        <p class="card-text">Ціна: @Html.DisplayFor(model => model.Price) грн</p>
-                        <p class="card-text">Кількість товару: @Html.DisplayFor(model => model.Offer.ItemAmount)</p>
-                        <p class="card-text">Продавець: @Html.DisplayFor(model => model.Offer.Seller.Username)</p>
-                        <p class="card-text">Покупець: @Html.DisplayFor(model => model.Order.Customer.Username)</p>
-                        <p class="card-text">Статус: @Html.DisplayFor(model => model.Order.Status.Name)</p>
-                        <p class="card-text">Метод оплати: @Html.DisplayFor(model => model.Order.PaymentMethod.Name)</p>
-                        <p class="card-text">Компанія доставки: @ViewBag.ShippingCompany.Name</p>
-                        <p class="card-text">Країна прибуття: @ViewBag.Shipping.ArrivalCountry</p>
-                        <p class="card-text">Місто прибуття: @ViewBag.Shipping.ArrivalCity</p>
-                        <p class="card-text">Вулиця прибуття: @ViewBag.Shipping.ArrivalStreet</p>
-                        <p class="card-text">Будинок прибуття: @ViewBag.Shipping.ArrivalBuildingNumber</p>
-                        <p class="card-text">Поштовий індекс прибуття: @ViewBag.Shipping.ArrivalZipCode</p>
-                        <p class="card-text">Країна відправлення: @ViewBag.Shipping.DepartmentCountry</p>
-                        <p class="card-text">Місто відправлення: @ViewBag.Shipping.DepartmentCity</p>
-                        <p class="card-text">Вулиця відправлення: @ViewBag.Shipping.DepartmentStreet</p>
-                        <p class="card-text">Будинок відправлення: @ViewBag.Shipping.DepartmentBuildingNumber</p>
-                        <p class="card-text">Поштовий індекс відправлення: @ViewBag.Shipping.DepartmentZipCode</p>
+                        <p class="card-text">Ціна: @Html.DisplayFor(model => model.Price) грн</p><hr />
+                        <p class="card-text">Кількість товару: @Html.DisplayFor(model => model.Offer.ItemAmount)</p><hr />
+                        <p class="card-text">Продавець: @Html.DisplayFor(model => model.Offer.Seller.Username)</p><hr />
+                        <p class="card-text">Покупець: @Html.DisplayFor(model => model.Order.Customer.Username)</p><hr />
+                        <p class="card-text">Статус: @Html.DisplayFor(model => model.Order.Status.Name)</p><hr />
+                        <p class="card-text">Метод оплати: @Html.DisplayFor(model => model.Order.PaymentMethod.Name)</p><hr />
+                        <p class="card-text">Компанія доставки: @ViewBag.ShippingCompany.Name</p><hr />
+                        <p class="card-text">Країна прибуття: @ViewBag.Shipping.ArrivalCountry</p><hr />
+                        <p class="card-text">Місто прибуття: @ViewBag.Shipping.ArrivalCity</p><hr />
+                        <p class="card-text">Вулиця прибуття: @ViewBag.Shipping.ArrivalStreet</p><hr />
+                        <p class="card-text">Будинок прибуття: @ViewBag.Shipping.ArrivalBuildingNumber</p><hr />
+                        <p class="card-text">Поштовий індекс прибуття: @ViewBag.Shipping.ArrivalZipCode</p><hr />
+                        <p class="card-text">Країна відправлення: @ViewBag.Shipping.DepartmentCountry</p><hr />
+                        <p class="card-text">Місто відправлення: @ViewBag.Shipping.DepartmentCity</p><hr />
+                        <p class="card-text">Вулиця відправлення: @ViewBag.Shipping.DepartmentStreet</p><hr />
+                        <p class="card-text">Будинок відправлення: @ViewBag.Shipping.DepartmentBuildingNumber</p><hr />
+                        <p class="card-text">Поштовий індекс відправлення: @ViewBag.Shipping.DepartmentZipCode</p><hr />
                         <p class="card-text"><small class="text-body-secondary">Створено @Html.DisplayFor(model => model.Order.DateOfOrder) </small></p>
                         @if (Model.Offer.SellerId == ViewBag.UserId)
                         {
@@ -51,6 +40,17 @@
                         }
                         <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Видалити</a>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    @if (Model.Offer.Photo != null && Model.Offer.Photo.Length > 0)
+                    {
+                        string base64String = Convert.ToBase64String(Model.Offer.Photo);
+                        <img src="data:image;base64,@base64String" alt="Photo" style="width:auto; height:auto;" class="img-fluid rounded-start" />
+                    }
+                    else
+                    {
+                        <div class="card-img-top" style="background-color: #f0f0f0; height: 200px;"></div>
+                    }
                 </div>
             </div>
         </div>
