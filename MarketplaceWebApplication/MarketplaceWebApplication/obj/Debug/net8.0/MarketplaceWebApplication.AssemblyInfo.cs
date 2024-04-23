@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MarketplaceWebApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+017e017dd7f085db82603df9af73cbd4b3d9fe74")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+268e575c46ee7bc03047fffcfb241e73d80d920e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MarketplaceWebApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MarketplaceWebApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

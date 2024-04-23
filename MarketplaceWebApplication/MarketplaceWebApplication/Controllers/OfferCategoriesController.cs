@@ -26,24 +26,6 @@ public class OfferCategoriesController : Controller
         return View(await _context.OfferCategories.ToListAsync());
     }
 
-    // GET: OfferCategories/Details/5
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var offerCategory = await _context.OfferCategories
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (offerCategory == null)
-        {
-            return NotFound();
-        }
-
-        return View(offerCategory);
-    }
-
     // GET: OfferCategories/Create
     public IActionResult Create()
     {

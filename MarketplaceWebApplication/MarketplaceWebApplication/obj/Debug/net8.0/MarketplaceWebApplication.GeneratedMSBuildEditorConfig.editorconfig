@@ -110,10 +110,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uVHlwZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/NotificationTypes/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uVHlwZXNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/NotificationTypes/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uVHlwZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -128,10 +124,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/OfferCategories/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJDYXRlZ29yaWVzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/OfferCategories/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJDYXRlZ29yaWVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/OfferCategories/Edit.cshtml]
@@ -202,10 +194,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJTdGF0dXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/OrderStatus/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJTdGF0dXNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/OrderStatus/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJTdGF0dXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -240,10 +228,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/PaymentMethods/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudE1ldGhvZHNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/PaymentMethods/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudE1ldGhvZHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/PaymentMethods/Edit.cshtml]
@@ -300,10 +284,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/ShippingCompanies/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBpbmdDb21wYW5pZXNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/ShippingCompanies/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBpbmdDb21wYW5pZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ІСтаТП/Lab1/Lab1/MarketplaceWebApplication/MarketplaceWebApplication/Views/ShippingCompanies/Edit.cshtml]

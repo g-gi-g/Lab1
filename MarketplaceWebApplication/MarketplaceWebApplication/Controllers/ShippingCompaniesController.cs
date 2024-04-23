@@ -26,24 +26,6 @@ public class ShippingCompaniesController : Controller
         return View(await _context.ShippingCompanies.ToListAsync());
     }
 
-    // GET: ShippingCompanies/Details/5
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var shippingCompany = await _context.ShippingCompanies
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (shippingCompany == null)
-        {
-            return NotFound();
-        }
-
-        return View(shippingCompany);
-    }
-
     // GET: ShippingCompanies/Create
     public IActionResult Create()
     {

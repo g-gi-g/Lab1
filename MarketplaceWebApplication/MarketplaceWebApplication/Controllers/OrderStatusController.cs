@@ -26,24 +26,6 @@ public class OrderStatusController : Controller
         return View(await _context.OrderStatuses.ToListAsync());
     }
 
-    // GET: OrderStatus/Details/5
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var orderStatus = await _context.OrderStatuses
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (orderStatus == null)
-        {
-            return NotFound();
-        }
-
-        return View(orderStatus);
-    }
-
     // GET: OrderStatus/Create
     public IActionResult Create()
     {

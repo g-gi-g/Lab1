@@ -26,24 +26,6 @@ public class PaymentMethodsController : Controller
         return View(await _context.PaymentMethods.ToListAsync());
     }
 
-    // GET: PaymentMethods/Details/5
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var paymentMethod = await _context.PaymentMethods
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (paymentMethod == null)
-        {
-            return NotFound();
-        }
-
-        return View(paymentMethod);
-    }
-
     // GET: PaymentMethods/Create
     public IActionResult Create()
     {

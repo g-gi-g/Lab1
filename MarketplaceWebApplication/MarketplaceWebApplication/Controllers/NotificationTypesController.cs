@@ -26,24 +26,6 @@ public class NotificationTypesController : Controller
         return View(await _context.NotificationTypes.ToListAsync());
     }
 
-    // GET: NotificationTypes/Details/5
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var notificationType = await _context.NotificationTypes
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (notificationType == null)
-        {
-            return NotFound();
-        }
-
-        return View(notificationType);
-    }
-
     // GET: NotificationTypes/Create
     public IActionResult Create()
     {
